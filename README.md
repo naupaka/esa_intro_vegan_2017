@@ -1,11 +1,11 @@
-## Community data analysis using the vegan package in R    
+## Introduction to community data analysis using the vegan package in R    
 
-Welcome to the GitHub repository for workshop on community ecology analyses using the ```vegan``` package at ESA 2014.
+Welcome to the GitHub repository for workshop on community ecology analyses using the `vegan` package at ESA 2015.
 
 **Location and time:**    
-Saturday, August 9, 2014    
+Saturday, August 8, 2015    
 12:00 PM - 5:00 PM     
-Location: Room **105**, Sacramento Convention Center     
+Location: Room **306**, Baltimore Convention Center     
 
 ## Organizers
 [Naupaka Zimmerman](http://naupaka.net) and [Gavin Simpson](http://www.fromthebottomoftheheap.net/).
@@ -13,8 +13,6 @@ Location: Room **105**, Sacramento Convention Center
 ---
 
 ## Pre workshop instructions
-
-<!-- **Important:** There will be no wifi in conference rooms this year so please plan on spending 10 minutes on Saturday night (or from the conference lobby on Sunday morning) to install the packages listed below and also download a local copy of this repository (see instructions below). -->
 
 ### Installing R  
 If you don't already have R set up with a suitable code editor, we recommend downloading and installing [R](http://cran.cnr.berkeley.edu) and [RStudio Desktop](http://www.rstudio.com/ide/download/) for your platform. Once installed, open RStudio and install the following packages. Simply paste these commands into your prompt. 
