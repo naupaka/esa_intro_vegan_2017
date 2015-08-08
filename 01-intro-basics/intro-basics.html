@@ -5,7 +5,6 @@
 
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="generator" content="pandoc" />
 
@@ -36,7 +35,12 @@
       // Author information
       presenters: [
             {
-        name: 'Naupaka Zimmerman and Gavin Simpson'
+        name:  'Naupaka Zimmerman and Gavin Simpson' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
       },
             ]
     };
@@ -84,12 +88,9 @@
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">August 9, 2014 • ESA 2014</p>
+            <p style="margin-top: 6px; margin-left: -2px;">August 8, 2015 • ESA 2015</p>
           </hgroup>
   </slide>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 <slide class=''><hgroup><h2>Workshop logistics</h2></hgroup><article  id="workshop-logistics">
 
@@ -97,12 +98,9 @@
 <li>Etherpad
 
 <ul>
-<li><a href='https://etherpad.mozilla.org/ESA2014-vegan' title=''>https://etherpad.mozilla.org/ESA2014-vegan</a></li>
+<li><a href='https://etherpad.mozilla.org/ESA2015-intro-vegan' title=''>https://etherpad.mozilla.org/ESA2015-intro-vegan</a></li>
 </ul></li>
 </ul>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Workshop logistics</h2></hgroup><article  id="workshop-logistics-1">
 
@@ -110,15 +108,12 @@
 <li>Etherpad
 
 <ul>
-<li><a href='https://etherpad.mozilla.org/ESA2014-vegan' title=''>https://etherpad.mozilla.org/ESA2014-vegan</a></li>
+<li><a href='https://etherpad.mozilla.org/ESA2015-intro-vegan' title=''>https://etherpad.mozilla.org/ESA2015-intro-vegan</a></li>
 </ul></li>
 <li>Red and Green Stickies</li>
 </ul>
 
 <p><img src='img/Green_post_it.png' title=''/>    <img src='img/Red_post_it.png' title=''/></p>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Packages installed?</h2></hgroup><article  id="packages-installed">
 
@@ -128,10 +123,7 @@ install.packages(&quot;reshape2&quot;)</pre>
 
 <h3>Data downloaded from github?</h3>
 
-<p><a href='https://github.com/naupaka/esa_vegan' title=''>https://github.com/naupaka/esa_vegan</a></p>
-
-<!----------------------------slide boundary--------------------------------->
-
+<p><a href='https://github.com/naupaka/esa_intro_vegan_2015' title=''>https://github.com/naupaka/esa_intro_vegan_2015</a></p>
 
 </article></slide><slide class=''><hgroup><h2>Introduction to <strong>vegan</strong> </h2><h3> a potted history</h3></hgroup><article  id="introduction-to-vegan-a-potted-history">
 
@@ -149,31 +141,22 @@ install.packages(&quot;reshape2&quot;)</pre>
 
 <ul>
 <li>The current stable release is version 2.0.10 which is available from CRAN</li>
-<li><a href='' title=''><a href='http://cran.r-project.org/web/packages/vegan' title=''>http://cran.r-project.org/web/packages/vegan</a></a></li>
+<li><a href='' title=''>http://cran.r-project.org/web/packages/vegan</a></li>
 <li>Development is mainly conducted via <a href='' title=''>r-forge.r-project.org</a> with a separate development version</li>
 <li>Development branch is 2.1.x will soon be released to CRAN as the 2.2 release branch</li>
 <li>R-forge also hosts our bug tracking, mailing lists &amp; forums which should be first port of call for getting help</li>
-<li><a href='' title=''><a href='http://r-forge.r-project.org/projects/vegan' title=''>http://r-forge.r-project.org/projects/vegan</a></a></li>
+<li><a href='' title=''>http://r-forge.r-project.org/projects/vegan</a></li>
 <li>Also several vignettes (manuals/guides) containing R code to explain how vegan works</li>
-<li>The vegan tutorial is available at <a href='' title=''><a href='http://vegan.r-forge.r-project.org' title=''>http://vegan.r-forge.r-project.org</a></a></li>
+<li>The vegan tutorial is available at <a href='' title=''>http://vegan.r-forge.r-project.org</a></li>
 </ul>
 
-<!----------------------------slide boundary--------------------------------->
-
-
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Cleaning and importing data</h2></hgroup><article  id="cleaning-and-importing-data">
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Digging in </h2><h3> Prepping your data for R and vegan</h3></hgroup><article  id="digging-in-prepping-your-data-for-r-and-vegan">
 
 <h3>“The purpose of computing is insight, not numbers”</h3>
 
 <h3>- Richard Hamming</h3>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Digging in </h2><h3> Prepping your data for R and vegan</h3></hgroup><article  id="digging-in-prepping-your-data-for-r-and-vegan-1">
 
@@ -183,15 +166,9 @@ install.packages(&quot;reshape2&quot;)</pre>
 
 <p><br /><br /><br /> But you have to get through the numbers to get to the insight&#8230;</p>
 
-<!----------------------------slide boundary--------------------------------->
-
-
 </article></slide><slide class=''><hgroup><h2>Digging in </h2><h3> Prepping your data for R and vegan</h3></hgroup><article  id="digging-in-prepping-your-data-for-r-and-vegan-2">
 
 <p>We&#39;ve all heard data horror stories <img src='img/otherpeoplesdata.png' title=''/></p>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Cleaning your data for R and vegan</h2></hgroup><article  id="cleaning-your-data-for-r-and-vegan">
 
@@ -202,17 +179,11 @@ BCI.small.csv.in &lt;- read.csv(&quot;data/BCI_small.csv&quot;, header = TRUE, r
 
 <p>RStudio example</p>
 
-<!----------------------------slide boundary--------------------------------->
-
-
 </article></slide><slide class=''><hgroup><h2>Cleaning your data for R and vegan</h2></hgroup><article  id="cleaning-your-data-for-r-and-vegan-1">
 
 <h3>Loading dirty data and then cleaning</h3>
 
 <pre class = 'prettyprint lang-r'>BCI.small.csv.in &lt;- read.csv(&quot;data/BCI_small_fixed.csv&quot;, header = TRUE, row.names = 1)</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Cleaning your data for R and vegan</h2></hgroup><article  id="cleaning-your-data-for-r-and-vegan-2">
 
@@ -228,9 +199,6 @@ BCI.small.csv.in &lt;- read.csv(&quot;data/BCI_small.csv&quot;, header = TRUE, r
 1                     0              0
 2                     0              0
 3                     1              0</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Cleaning your data for R and vegan</h2></hgroup><article  id="cleaning-your-data-for-r-and-vegan-3">
 
@@ -253,9 +221,6 @@ BCI.small.csv.in &lt;- read.csv(&quot;data/BCI_small.csv&quot;, header = TRUE, r
  3rd Qu.:0.00          3rd Qu.:1.0   
  Max.   :1.00          Max.   :5.0   </pre>
 
-<!----------------------------slide boundary--------------------------------->
-
-
 </article></slide><slide class=''><hgroup><h2>Cleaning your data for R and vegan</h2></hgroup><article  id="cleaning-your-data-for-r-and-vegan-4">
 
 <p>We will now switch to using one of vegan&#39;s built-in datasets for species (<code>BCI</code>) and environmental variables from the same paper, which we will load directly</p>
@@ -264,17 +229,9 @@ BCI.small.csv.in &lt;- read.csv(&quot;data/BCI_small.csv&quot;, header = TRUE, r
 <li>from Condit et al. 2002 <em>Science</em></li>
 </ul>
 
-<pre class = 'prettyprint lang-r'>library(&quot;vegan&quot;)</pre>
-
-<pre >Loading required package: permute
-Loading required package: lattice
-This is vegan 2.0-10</pre>
-
-<pre class = 'prettyprint lang-r'>data(BCI)
+<pre class = 'prettyprint lang-r'>library(&quot;vegan&quot;)
+data(BCI)
 BCI.env &lt;- read.csv(&quot;data/BCI.env.csv&quot;, header = TRUE, row.names = 1)</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Cleaning your data for R and vegan</h2></hgroup><article  id="cleaning-your-data-for-r-and-vegan-5">
 
@@ -290,18 +247,12 @@ BCI.env &lt;- read.csv(&quot;data/BCI.env.csv&quot;, header = TRUE, row.names = 
 
 <pre class = 'prettyprint lang-r'>head(BCI[,1:3], n = 3)</pre>
 
-<pre >  Abarema.macradenium Acacia.melanoceras Acalypha.diversifolia
-1                   0                  0                     0
-2                   0                  0                     0
-3                   0                  0                     0</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+<pre >  Abarema.macradenia Acacia.melanoceras Acalypha.diversifolia
+1                  0                  0                     0
+2                  0                  0                     0
+3                  0                  0                     0</pre>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Basic data summarizing</h2></hgroup><article  id="basic-data-summarizing">
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Summarizing data with <code>apply()</code> </h2><h3> sums and sorting</h3></hgroup><article  id="summarizing-data-with-apply-sums-and-sorting">
 
@@ -312,9 +263,6 @@ sort(sum.of.rows, decreasing = TRUE)[1:8] #top 8 rows (plots) </pre>
 
 <pre > 35   4   5  40  10  30   3  15 
 601 508 505 489 483 475 463 462 </pre>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Summarizing data with <code>apply()</code> </h2><h3> sums and sorting</h3></hgroup><article  id="summarizing-data-with-apply-sums-and-sorting-1">
 
@@ -334,9 +282,6 @@ sort(sum.of.columns, decreasing = TRUE)[1:3] #top 3 columns (species)</pre>
 <pre > Faramea.occidentalis Trichilia.tuberculata      Alseis.blackiana 
                  1717                  1681                   983 </pre>
 
-<!----------------------------slide boundary--------------------------------->
-
-
 </article></slide><slide class=''><hgroup><h2>Summarizing data with <code>apply()</code> </h2><h3> sums and sorting</h3></hgroup><article  id="summarizing-data-with-apply-sums-and-sorting-2">
 
 <p><strong>Number of plots in which each spp. occurs</strong></p>
@@ -348,22 +293,16 @@ sort(spec.pres, decreasing = TRUE)[1:18]</pre>
                      50                      50                      50 
       Oenocarpus.mapora     Protium.tenuifolium Tetragastris.panamensis 
                      50                      50                      50 
-  Trichilia.tuberculata           Apeiba.aspera        Gustavia.superba 
+  Trichilia.tuberculata           Apeiba.glabra        Gustavia.superba 
                      50                      49                      49 
     Pouteria.reticulata  Quararibea.asterolepis           Randia.armata 
                      49                      49                      49 
-    Brosimum.alicastrum       Cordia.lasiocalyx     Eugenia.oerstedeana 
+    Brosimum.alicastrum       Cordia.lasiocalyx     Eugenia.oerstediana 
                      48                      48                      48 
         Guarea.guidonia    Hasseltia.floribunda      Heisteria.concinna 
                      48                      48                      48 </pre>
 
-<!----------------------------slide boundary--------------------------------->
-
-
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Data Transformation</h2></hgroup><article  id="data-transformation">
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Basic data transformation</h2></hgroup><article  id="basic-data-transformation">
 
@@ -375,9 +314,6 @@ sort(spec.pres, decreasing = TRUE)[1:18]</pre>
 1                13                    5                 2
 2                12                    4                 0
 3                12                    1                 2</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Basic data transformation</h2></hgroup><article  id="basic-data-transformation-1">
 
@@ -394,12 +330,9 @@ sort(spec.pres, decreasing = TRUE)[1:18]</pre>
 head(spec.sqrt[,162:164], n = 3)</pre>
 
 <pre >  Prioria.copaifera Protium.costaricense Protium.panamense
-1             3.606                2.236             1.414
-2             3.464                2.000             0.000
-3             3.464                1.000             1.414</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+1          3.605551             2.236068          1.414214
+2          3.464102             2.000000          0.000000
+3          3.464102             1.000000          1.414214</pre>
 
 </article></slide><slide class=''><hgroup><h2>Data transformation in vegan with <code>decostand()</code></h2></hgroup><article  id="data-transformation-in-vegan-with-decostand">
 
@@ -411,9 +344,6 @@ head(spec.sqrt[,162:164], n = 3)</pre>
 1                13                    5                 2
 2                12                    4                 0
 3                12                    1                 2</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Data transformation in vegan with <code>decostand()</code></h2></hgroup><article  id="data-transformation-in-vegan-with-decostand-1">
 
@@ -430,12 +360,9 @@ head(spec.sqrt[,162:164], n = 3)</pre>
 head(spec.total[,162:164], n = 3)</pre>
 
 <pre >  Prioria.copaifera Protium.costaricense Protium.panamense
-1           0.02902             0.011161          0.004464
-2           0.02759             0.009195          0.000000
-3           0.02592             0.002160          0.004320</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+1        0.02901786          0.011160714       0.004464286
+2        0.02758621          0.009195402       0.000000000
+3        0.02591793          0.002159827       0.004319654</pre>
 
 </article></slide><slide class=''><hgroup><h2>Data transformation in vegan with <code>decostand()</code></h2></hgroup><article  id="data-transformation-in-vegan-with-decostand-2">
 
@@ -447,9 +374,6 @@ head(spec.total[,162:164], n = 3)</pre>
 1                13                    5                 2
 2                12                    4                 0
 3                12                    1                 2</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Data transformation in vegan with <code>decostand()</code></h2></hgroup><article  id="data-transformation-in-vegan-with-decostand-3">
 
@@ -466,12 +390,9 @@ head(spec.total[,162:164], n = 3)</pre>
 head(spec.max[,162:164], n = 3)</pre>
 
 <pre >  Prioria.copaifera Protium.costaricense Protium.panamense
-1            0.5000               0.7143               0.5
-2            0.4615               0.5714               0.0
-3            0.4615               0.1429               0.5</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+1         0.5000000            0.7142857               0.5
+2         0.4615385            0.5714286               0.0
+3         0.4615385            0.1428571               0.5</pre>
 
 </article></slide><slide class=''><hgroup><h2>Data transformation in vegan with <code>decostand()</code></h2></hgroup><article  id="data-transformation-in-vegan-with-decostand-4">
 
@@ -483,9 +404,6 @@ head(spec.max[,162:164], n = 3)</pre>
 1                13                    5                 2
 2                12                    4                 0
 3                12                    1                 2</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Data transformation in vegan with <code>decostand()</code></h2></hgroup><article  id="data-transformation-in-vegan-with-decostand-5">
 
@@ -506,9 +424,6 @@ head(spec.pa[,162:164], n = 3)</pre>
 2                 1                    1                 0
 3                 1                    1                 1</pre>
 
-<!----------------------------slide boundary--------------------------------->
-
-
 </article></slide><slide class=''><hgroup><h2>Data transformation in vegan with <code>decostand()</code></h2></hgroup><article  id="data-transformation-in-vegan-with-decostand-6">
 
 <p><strong>Hellinger (Legendre &amp; Gallagher 2001)</strong> Square root of method &quot;total&quot;</p>
@@ -519,9 +434,6 @@ head(spec.pa[,162:164], n = 3)</pre>
 1                13                    5                 2
 2                12                    4                 0
 3                12                    1                 2</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Data transformation in vegan with <code>decostand()</code></h2></hgroup><article  id="data-transformation-in-vegan-with-decostand-7">
 
@@ -538,12 +450,9 @@ head(spec.pa[,162:164], n = 3)</pre>
 head(spec.hellinger[,162:164], n = 3)</pre>
 
 <pre >  Prioria.copaifera Protium.costaricense Protium.panamense
-1            0.1703              0.10564           0.06682
-2            0.1661              0.09589           0.00000
-3            0.1610              0.04647           0.06572</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+1         0.1703463           0.10564428        0.06681531
+2         0.1660910           0.09589266        0.00000000
+3         0.1609905           0.04647394        0.06572408</pre>
 
 </article></slide><slide class=''><hgroup><h2>Data transformation in vegan with <code>decostand()</code></h2></hgroup><article  id="data-transformation-in-vegan-with-decostand-8">
 
@@ -555,9 +464,6 @@ head(spec.hellinger[,162:164], n = 3)</pre>
 1                13                    5                 2
 2                12                    4                 0
 3                12                    1                 2</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Data transformation in vegan with <code>decostand()</code></h2></hgroup><article  id="data-transformation-in-vegan-with-decostand-9">
 
@@ -574,26 +480,17 @@ head(spec.hellinger[,162:164], n = 3)</pre>
 head(spec.wisc[,162:164], n = 3)</pre>
 
 <pre >  Prioria.copaifera Protium.costaricense Protium.panamense
-1           0.01316             0.018798           0.01316
-2           0.01532             0.018973           0.00000
-3           0.01411             0.004367           0.01528</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+1        0.01315834          0.018797633        0.01315834
+2        0.01532406          0.018972642        0.00000000
+3        0.01410727          0.004366536        0.01528288</pre>
 
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Calculating community distances</h2></hgroup><article  id="calculating-community-distances">
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Calculating distances with <code>vegdist()</code> </h2><h3> so many distance metrics, so little time!</h3></hgroup><article  id="calculating-distances-with-vegdist-so-many-distance-metrics-so-little-time">
 
 <h3>Many different community distance metrics are available in <code>vegdist()</code></h3>
 
 <p><em>manhattan, euclidean, canberra, bray, kulczynski, jaccard, gower, altGower, morisita, horn, mountford, raup, binomial, chao, or cao</em></p>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Calculating distances with <code>vegdist()</code> </h2><h3> so many distance metrics, so little time!</h3></hgroup><article  id="calculating-distances-with-vegdist-so-many-distance-metrics-so-little-time-1">
 
@@ -613,21 +510,15 @@ str(spec.jaccpa) </pre>
   ..- attr(*, &quot;method&quot;)= chr &quot;binary jaccard&quot;
   ..- attr(*, &quot;call&quot;)= language vegdist(x = BCI, method = &quot;jaccard&quot;, binary = TRUE)</pre>
 
-<!----------------------------slide boundary--------------------------------->
-
-
 </article></slide><slide class=''><hgroup><h2>Calculating distances with <code>vegdist()</code> </h2><h3> so many distance metrics, so little time!</h3></hgroup><article  id="calculating-distances-with-vegdist-so-many-distance-metrics-so-little-time-2">
 
 <pre class = 'prettyprint lang-r'>as.matrix(spec.jaccpa)[1:4,1:4]</pre>
 
-<pre >       1      2      3      4
-1 0.0000 0.4336 0.4622 0.4417
-2 0.4336 0.0000 0.4464 0.4386
-3 0.4622 0.4464 0.0000 0.4274
-4 0.4417 0.4386 0.4274 0.0000</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+<pre >          1         2         3         4
+1 0.0000000 0.4336283 0.4621849 0.4416667
+2 0.4336283 0.0000000 0.4464286 0.4385965
+3 0.4621849 0.4464286 0.0000000 0.4273504
+4 0.4416667 0.4385965 0.4273504 0.0000000</pre>
 
 </article></slide><slide class=''><hgroup><h2>Calculating distances with <code>vegdist()</code> </h2><h3> so many distance metrics, so little time!</h3></hgroup><article  id="calculating-distances-with-vegdist-so-many-distance-metrics-so-little-time-3">
 
@@ -636,9 +527,6 @@ str(spec.jaccpa) </pre>
 <h3>First step, read the help for vegdist</h3>
 
 <pre class = 'prettyprint lang-r'>?vegdist</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Calculating distances with <code>vegdist()</code> </h2><h3> so many distance metrics, so little time!</h3></hgroup><article  id="calculating-distances-with-vegdist-so-many-distance-metrics-so-little-time-4">
 
@@ -651,10 +539,7 @@ str(spec.jaccpa) </pre>
 rank.UTM.NS</pre>
 
 <pre >     bray    euclid manhattan      horn 
-   0.1344    0.1521    0.1727    0.1687 </pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+0.1344155 0.1520871 0.1727256 0.1687463 </pre>
 
 </article></slide><slide class=''><hgroup><h2>Calculating distances with <code>vegdist()</code> </h2><h3> so many distance metrics, so little time!</h3></hgroup><article  id="calculating-distances-with-vegdist-so-many-distance-metrics-so-little-time-5">
 
@@ -666,26 +551,20 @@ rank.UTM.NS</pre>
               c(&quot;bray&quot;, &quot;euclid&quot;, &quot;manhattan&quot;, &quot;horn&quot;), method = &quot;spearman&quot;)
 rank.UTM.NS.wisc</pre>
 
-<pre >     bray    euclid manhattan      horn 
-  0.12053   0.07631   0.12053   0.12799 </pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+<pre >      bray     euclid  manhattan       horn 
+0.12053153 0.07630866 0.12053153 0.12799120 </pre>
 
 </article></slide><slide class=''><hgroup><h2>Calculating distances with <code>vegdist()</code> </h2><h3> comparison</h3></hgroup><article  id="calculating-distances-with-vegdist-comparison">
 
 <pre class = 'prettyprint lang-r'>sort(rank.UTM.NS, decreasing = TRUE)</pre>
 
 <pre >manhattan      horn    euclid      bray 
-   0.1727    0.1687    0.1521    0.1344 </pre>
+0.1727256 0.1687463 0.1520871 0.1344155 </pre>
 
 <pre class = 'prettyprint lang-r'>sort(rank.UTM.NS.wisc, decreasing = TRUE)</pre>
 
-<pre >     horn      bray manhattan    euclid 
-  0.12799   0.12053   0.12053   0.07631 </pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+<pre >      horn       bray  manhattan     euclid 
+0.12799120 0.12053153 0.12053153 0.07630866 </pre>
 
 </article></slide><slide class=''><hgroup><h2>Activity</h2></hgroup><article  id="activity">
 
@@ -701,13 +580,7 @@ rank.UTM.NS.wisc</pre>
 <li>Calculate community distances using that metric.</li>
 </ol>
 
-<!----------------------------slide boundary--------------------------------->
-
-
 </article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>Diversity metrics</h2></hgroup><article  id="diversity-metrics">
-
-<!----------------------------slide boundary--------------------------------->
-
 
 </article></slide><slide class=''><hgroup><h2>Alpha diversity</h2></hgroup><article  id="alpha-diversity">
 
@@ -719,9 +592,6 @@ site.richness[1:18]</pre>
 <pre >  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18 
  93  84  90  94 101  85  82  88  90  94  87  84  93  98  93  93  93  89 </pre>
 
-<!----------------------------slide boundary--------------------------------->
-
-
 </article></slide><slide class=''><hgroup><h2>Alpha diversity </h2><h3> Other metrics</h3></hgroup><article  id="alpha-diversity-other-metrics">
 
 <p>Fisher&#39;s alpha</p>
@@ -729,11 +599,10 @@ site.richness[1:18]</pre>
 <pre class = 'prettyprint lang-r'>site.fisher &lt;- fisher.alpha(BCI)
 site.fisher[1:12]</pre>
 
-<pre >    1     2     3     4     5     6     7     8     9    10    11    12 
-35.67 30.99 33.32 33.92 37.96 32.49 30.58 33.45 35.67 34.82 34.21 34.12 </pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+<pre >       1        2        3        4        5        6        7        8 
+35.67297 30.99091 33.32033 33.92209 37.96423 32.49374 30.58383 33.44981 
+       9       10       11       12 
+35.67236 34.82320 34.20590 34.12041 </pre>
 
 </article></slide><slide class=''><hgroup><h2>Alpha diversity </h2><h3> Other metrics</h3></hgroup><article  id="alpha-diversity-other-metrics-1">
 
@@ -742,11 +611,10 @@ site.fisher[1:12]</pre>
 <pre class = 'prettyprint lang-r'>site.shannon &lt;- diversity(BCI, index = &quot;shannon&quot;, MARGIN = 1)
 site.shannon[1:12]</pre>
 
-<pre >    1     2     3     4     5     6     7     8     9    10    11    12 
-4.018 3.848 3.814 3.977 3.970 3.777 3.837 3.908 3.761 3.890 3.860 3.698 </pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+<pre >       1        2        3        4        5        6        7        8 
+4.018412 3.848471 3.814060 3.976563 3.969940 3.776575 3.836811 3.908381 
+       9       10       11       12 
+3.761331 3.889803 3.859814 3.698414 </pre>
 
 </article></slide><slide class=''><hgroup><h2>Rarefaction</h2></hgroup><article  id="rarefaction">
 
@@ -759,9 +627,6 @@ site.shannon[1:12]</pre>
 <pre class = 'prettyprint lang-r'># could also use rowsums() instead of apply()
 BCI.raremax &lt;- min(apply(BCI, 1, sum))</pre>
 
-<!----------------------------slide boundary--------------------------------->
-
-
 </article></slide><slide class=''><hgroup><h2>Rarefaction</h2></hgroup><article  id="rarefaction-1">
 
 <p>Rarefy BCI species matrix to the minimum number of individuals in any plot<br/>and plot the relationship between observed and rarefied counts (plus add 1-1 line)</p>
@@ -770,10 +635,7 @@ BCI.raremax &lt;- min(apply(BCI, 1, sum))</pre>
 plot(BCI.S, BCI.Srare, xlab = &quot;Observed No. of Species&quot;, ylab = &quot;Rarefied No. of Species&quot;)
 abline(0, 1)</pre>
 
-<img src='intro-basics_files/figure-html/rarefac%203.png' title=''/>
-
-<!----------------------------slide boundary--------------------------------->
-
+<img src='intro-basics_files/figure-html/rarefac-3-1.png' title=''/>
 
 </article></slide><slide class=''><hgroup><h2>Rarefaction</h2></hgroup><article  id="rarefaction-2">
 
@@ -781,10 +643,7 @@ abline(0, 1)</pre>
 
 <pre class = 'prettyprint lang-r'>rarecurve(BCI, step = 20, sample = BCI.raremax, col = &quot;blue&quot;, cex = 0.6)</pre>
 
-<img src='intro-basics_files/figure-html/rarefac%204.png' title=''/>
-
-<!----------------------------slide boundary--------------------------------->
-
+<img src='intro-basics_files/figure-html/rarefac-4-1.png' title=''/>
 
 </article></slide><slide class=''><hgroup><h2>Beta diversity</h2></hgroup><article  id="beta-diversity">
 
@@ -803,14 +662,11 @@ No. of Negative Eigenvalues: 6
 
 Average distance to median:
 1011568.985 1011668.985 1011768.985 1011868.985 1011968.985 
-      0.282       0.266       0.314       0.294       0.334 
+     0.2817      0.2663      0.3140      0.2945      0.3339 
 
 Eigenvalues for PCoA axes:
-PCoA1 PCoA2 PCoA3 PCoA4 PCoA5 PCoA6 PCoA7 PCoA8 
-1.016 0.707 0.532 0.332 0.261 0.251 0.226 0.170 </pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+ PCoA1  PCoA2  PCoA3  PCoA4  PCoA5  PCoA6  PCoA7  PCoA8 
+1.0163 0.7067 0.5318 0.3316 0.2606 0.2507 0.2257 0.1703 </pre>
 
 </article></slide><slide class=''><hgroup><h2>Beta diversity</h2></hgroup><article  id="beta-diversity-1" class="smaller">
 
@@ -820,29 +676,13 @@ PCoA1 PCoA2 PCoA3 PCoA4 PCoA5 PCoA6 PCoA7 PCoA8
 
 <pre >
 Permutation test for homogeneity of multivariate dispersions
+Permutation: free
+Number of permutations: 999
 
-Permutation Design:
-
-Blocks:
-  Defined by: none
-
-Plots:
-  Defined by: none
-
-Within Plots:
-  Permutation type: free
-
-Permutation details:
-  Number of permutations requested: 999
-  Max. number of permutations allowed: 9999
-  Evaluate all permutations?: No.  Activation limit: 99
 Response: Distances
-          Df Sum Sq Mean Sq   F N.Perm Pr(&gt;F)
-Groups     4 0.0283 0.00708 1.8    999   0.13
-Residuals 45 0.1766 0.00392                  </pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+          Df   Sum Sq   Mean Sq      F N.Perm Pr(&gt;F)
+Groups     4 0.028314 0.0070785 1.8041    999  0.165
+Residuals 45 0.176555 0.0039235                     </pre>
 
 </article></slide><slide class=''><hgroup><h2>Beta diversity</h2></hgroup><article  id="beta-diversity-2">
 
@@ -850,10 +690,7 @@ Residuals 45 0.1766 0.00392                  </pre>
 
 <pre class = 'prettyprint lang-r'>plot(BCI.bray.bdisp)</pre>
 
-<img src='intro-basics_files/figure-html/beta%203.png' title=''/>
-
-<!----------------------------slide boundary--------------------------------->
-
+<img src='intro-basics_files/figure-html/beta-3-1.png' title=''/>
 
 </article></slide><slide class=''><hgroup><h2>Beta diversity</h2></hgroup><article  id="beta-diversity-3">
 
@@ -861,10 +698,7 @@ Residuals 45 0.1766 0.00392                  </pre>
 
 <pre class = 'prettyprint lang-r'>boxplot(BCI.bray.bdisp)</pre>
 
-<img src='intro-basics_files/figure-html/beta%204.png' title=''/>
-
-<!----------------------------slide boundary--------------------------------->
-
+<img src='intro-basics_files/figure-html/beta-4-1.png' title=''/>
 
 </article></slide><slide class=''><hgroup><h2>Beta diversity </h2><h3> ANOSIM</h3></hgroup><article  id="beta-diversity-anosim">
 
@@ -877,13 +711,11 @@ Call:
 anosim(dat = BCI.bray, grouping = as.factor(BCI.env$UTM.NS)) 
 Dissimilarity: bray 
 
-ANOSIM statistic R: 0.102 
-      Significance: 0.006 
+ANOSIM statistic R: 0.1019 
+      Significance: 0.005 
 
-Based on  999  permutations</pre>
-
-<!----------------------------slide boundary--------------------------------->
-
+Permutation: free
+Number of permutations: 999</pre>
 
 </article></slide><slide class=''><hgroup><h2>Beta diversity </h2><h3> ANOSIM</h3></hgroup><article  id="beta-diversity-anosim-1">
 
@@ -891,12 +723,7 @@ Based on  999  permutations</pre>
 
 <pre class = 'prettyprint lang-r'>plot(BCI.bray.anosim)</pre>
 
-<img src='intro-basics_files/figure-html/beta%206.png' title=''/>
-
-<!----------------------------slide boundary--------------------------------->
-
-
-</article></slide>
+<img src='intro-basics_files/figure-html/beta-6-1.png' title=''/></article></slide>
 
 
   <slide class="backdrop"></slide>
@@ -911,12 +738,12 @@ Based on  999  permutations</pre>
 <script src="intro-basics_files/ioslides-13.5.1/js/slide-controller.js"></script>
 <script src="intro-basics_files/ioslides-13.5.1/js/slide-deck.js"></script>
 
-<!-- dynamically load mathjax for compatibility with --self-contained -->
+<!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

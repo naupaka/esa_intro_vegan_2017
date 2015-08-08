@@ -1,27 +1,27 @@
 # Community data analysis using the vegan package in R
 Naupaka Zimmerman and Gavin Simpson  
-August 9, 2014 • ESA 2014  
+August 8, 2015 • ESA 2015  
 
 
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Workshop logistics
 
 * Etherpad 
-    * https://etherpad.mozilla.org/ESA2014-vegan
+    * https://etherpad.mozilla.org/ESA2015-intro-vegan
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Workshop logistics
 
 * Etherpad 
-    * https://etherpad.mozilla.org/ESA2014-vegan
+    * https://etherpad.mozilla.org/ESA2015-intro-vegan
 * Red and Green Stickies 
   
 ![](img/Green_post_it.png)&nbsp;&nbsp;&nbsp;&nbsp;![](img/Red_post_it.png)
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Packages installed?
 
@@ -33,9 +33,9 @@ install.packages("reshape2")
 ```
 
 ### Data downloaded from github?  
-https://github.com/naupaka/esa_vegan
+https://github.com/naupaka/esa_intro_vegan_2015
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Introduction to **vegan** | a potted history
 
@@ -58,18 +58,18 @@ https://github.com/naupaka/esa_vegan
  * Also several vignettes (manuals/guides) containing R code to explain how vegan works
  * The vegan tutorial is available at [http://vegan.r-forge.r-project.org]()
 
-<!----------------------------slide boundary--------------------------------->
+
 
 # Cleaning and importing data
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Digging in | Prepping your data for R and vegan
 
 ### “The purpose of computing is insight, not numbers” 
 ### - Richard Hamming 
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Digging in | Prepping your data for R and vegan
 
@@ -78,14 +78,14 @@ https://github.com/naupaka/esa_vegan
 <br /><br /><br />
 But you have to get through the numbers to get to the insight...
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Digging in | Prepping your data for R and vegan
 
 We've all heard data horror stories
 ![](img/otherpeoplesdata.png)
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Cleaning your data for R and vegan
 
@@ -97,7 +97,7 @@ BCI.small.csv.in <- read.csv("data/BCI_small.csv", header = TRUE, row.names = 1)
 ```
 RStudio example
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Cleaning your data for R and vegan
 
@@ -107,7 +107,7 @@ RStudio example
 BCI.small.csv.in <- read.csv("data/BCI_small_fixed.csv", header = TRUE, row.names = 1)
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Cleaning your data for R and vegan
 
@@ -128,7 +128,7 @@ head(BCI.small.csv.in, n=3)
 3                     1              0
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Cleaning your data for R and vegan
 
@@ -155,7 +155,7 @@ summary(BCI.small.csv.in)
  Max.   :1.00          Max.   :5.0   
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Cleaning your data for R and vegan
 
@@ -166,20 +166,11 @@ We will now switch to using one of vegan's built-in datasets for species (`BCI`)
 
 ```r
 library("vegan")
-```
-
-```
-Loading required package: permute
-Loading required package: lattice
-This is vegan 2.0-10
-```
-
-```r
 data(BCI)
 BCI.env <- read.csv("data/BCI.env.csv", header = TRUE, row.names = 1)
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Cleaning your data for R and vegan
 
@@ -200,17 +191,17 @@ head(BCI[,1:3], n = 3)
 ```
 
 ```
-  Abarema.macradenium Acacia.melanoceras Acalypha.diversifolia
-1                   0                  0                     0
-2                   0                  0                     0
-3                   0                  0                     0
+  Abarema.macradenia Acacia.melanoceras Acalypha.diversifolia
+1                  0                  0                     0
+2                  0                  0                     0
+3                  0                  0                     0
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 # Basic data summarizing
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Summarizing data with `apply()` | sums and sorting
 
@@ -226,7 +217,7 @@ sort(sum.of.rows, decreasing = TRUE)[1:8] #top 8 rows (plots)
 601 508 505 489 483 475 463 462 
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Summarizing data with `apply()` | sums and sorting
 
@@ -253,7 +244,7 @@ sort(sum.of.columns, decreasing = TRUE)[1:3] #top 3 columns (species)
                  1717                  1681                   983 
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Summarizing data with `apply()` | sums and sorting
 
@@ -269,21 +260,21 @@ sort(spec.pres, decreasing = TRUE)[1:18]
                      50                      50                      50 
       Oenocarpus.mapora     Protium.tenuifolium Tetragastris.panamensis 
                      50                      50                      50 
-  Trichilia.tuberculata           Apeiba.aspera        Gustavia.superba 
+  Trichilia.tuberculata           Apeiba.glabra        Gustavia.superba 
                      50                      49                      49 
     Pouteria.reticulata  Quararibea.asterolepis           Randia.armata 
                      49                      49                      49 
-    Brosimum.alicastrum       Cordia.lasiocalyx     Eugenia.oerstedeana 
+    Brosimum.alicastrum       Cordia.lasiocalyx     Eugenia.oerstediana 
                      48                      48                      48 
         Guarea.guidonia    Hasseltia.floribunda      Heisteria.concinna 
                      48                      48                      48 
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 # Data Transformation
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Basic data transformation
 
@@ -300,7 +291,7 @@ head(BCI[,162:164], n = 3)
 3                12                    1                 2
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Basic data transformation
 
@@ -324,12 +315,12 @@ head(spec.sqrt[,162:164], n = 3)
 
 ```
   Prioria.copaifera Protium.costaricense Protium.panamense
-1             3.606                2.236             1.414
-2             3.464                2.000             0.000
-3             3.464                1.000             1.414
+1          3.605551             2.236068          1.414214
+2          3.464102             2.000000          0.000000
+3          3.464102             1.000000          1.414214
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Data transformation in vegan with `decostand()`
 
@@ -346,7 +337,7 @@ head(BCI[,162:164], n = 3)
 3                12                    1                 2
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Data transformation in vegan with `decostand()`
 
@@ -370,12 +361,12 @@ head(spec.total[,162:164], n = 3)
 
 ```
   Prioria.copaifera Protium.costaricense Protium.panamense
-1           0.02902             0.011161          0.004464
-2           0.02759             0.009195          0.000000
-3           0.02592             0.002160          0.004320
+1        0.02901786          0.011160714       0.004464286
+2        0.02758621          0.009195402       0.000000000
+3        0.02591793          0.002159827       0.004319654
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Data transformation in vegan with `decostand()`
 
@@ -392,7 +383,7 @@ head(BCI[,162:164], n = 3)
 3                12                    1                 2
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Data transformation in vegan with `decostand()`
 
@@ -416,12 +407,12 @@ head(spec.max[,162:164], n = 3)
 
 ```
   Prioria.copaifera Protium.costaricense Protium.panamense
-1            0.5000               0.7143               0.5
-2            0.4615               0.5714               0.0
-3            0.4615               0.1429               0.5
+1         0.5000000            0.7142857               0.5
+2         0.4615385            0.5714286               0.0
+3         0.4615385            0.1428571               0.5
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Data transformation in vegan with `decostand()`
 
@@ -438,7 +429,7 @@ head(BCI[,162:164], n = 3)
 3                12                    1                 2
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Data transformation in vegan with `decostand()`
 
@@ -467,7 +458,7 @@ head(spec.pa[,162:164], n = 3)
 3                 1                    1                 1
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Data transformation in vegan with `decostand()`
 
@@ -485,7 +476,7 @@ head(BCI[,162:164], n = 3)
 3                12                    1                 2
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Data transformation in vegan with `decostand()`
 
@@ -510,12 +501,12 @@ head(spec.hellinger[,162:164], n = 3)
 
 ```
   Prioria.copaifera Protium.costaricense Protium.panamense
-1            0.1703              0.10564           0.06682
-2            0.1661              0.09589           0.00000
-3            0.1610              0.04647           0.06572
+1         0.1703463           0.10564428        0.06681531
+2         0.1660910           0.09589266        0.00000000
+3         0.1609905           0.04647394        0.06572408
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Data transformation in vegan with `decostand()`
 
@@ -533,7 +524,7 @@ head(BCI[,162:164], n = 3)
 3                12                    1                 2
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Data transformation in vegan with `decostand()`
 
@@ -558,23 +549,23 @@ head(spec.wisc[,162:164], n = 3)
 
 ```
   Prioria.copaifera Protium.costaricense Protium.panamense
-1           0.01316             0.018798           0.01316
-2           0.01532             0.018973           0.00000
-3           0.01411             0.004367           0.01528
+1        0.01315834          0.018797633        0.01315834
+2        0.01532406          0.018972642        0.00000000
+3        0.01410727          0.004366536        0.01528288
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 # Calculating community distances
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
 ### Many different community distance metrics are available in `vegdist()`    
 *manhattan, euclidean, canberra, bray, kulczynski, jaccard, gower, altGower, morisita, horn, mountford, raup, binomial, chao, or cao*
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
@@ -598,7 +589,7 @@ Class 'dist'  atomic [1:1225] 0.434 0.462 0.442 0.46 0.425 ...
   ..- attr(*, "call")= language vegdist(x = BCI, method = "jaccard", binary = TRUE)
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
@@ -608,15 +599,15 @@ as.matrix(spec.jaccpa)[1:4,1:4]
 ```
 
 ```
-       1      2      3      4
-1 0.0000 0.4336 0.4622 0.4417
-2 0.4336 0.0000 0.4464 0.4386
-3 0.4622 0.4464 0.0000 0.4274
-4 0.4417 0.4386 0.4274 0.0000
+          1         2         3         4
+1 0.0000000 0.4336283 0.4621849 0.4416667
+2 0.4336283 0.0000000 0.4464286 0.4385965
+3 0.4621849 0.4464286 0.0000000 0.4273504
+4 0.4416667 0.4385965 0.4273504 0.0000000
 ```
 
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
@@ -627,7 +618,7 @@ as.matrix(spec.jaccpa)[1:4,1:4]
 ?vegdist
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
@@ -642,10 +633,10 @@ rank.UTM.NS
 
 ```
      bray    euclid manhattan      horn 
-   0.1344    0.1521    0.1727    0.1687 
+0.1344155 0.1520871 0.1727256 0.1687463 
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
@@ -659,11 +650,11 @@ rank.UTM.NS.wisc
 ```
 
 ```
-     bray    euclid manhattan      horn 
-  0.12053   0.07631   0.12053   0.12799 
+      bray     euclid  manhattan       horn 
+0.12053153 0.07630866 0.12053153 0.12799120 
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Calculating distances with `vegdist()` | comparison
 
@@ -674,7 +665,7 @@ sort(rank.UTM.NS, decreasing = TRUE)
 
 ```
 manhattan      horn    euclid      bray 
-   0.1727    0.1687    0.1521    0.1344 
+0.1727256 0.1687463 0.1520871 0.1344155 
 ```
 
 ```r
@@ -682,11 +673,11 @@ sort(rank.UTM.NS.wisc, decreasing = TRUE)
 ```
 
 ```
-     horn      bray manhattan    euclid 
-  0.12799   0.12053   0.12053   0.07631 
+      horn       bray  manhattan     euclid 
+0.12799120 0.12053153 0.12053153 0.07630866 
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Activity
 
@@ -700,11 +691,11 @@ There is a data file in the workshop repositiory, in the `01-intro-basics/data/`
 6. Evaluate at least five different community distance metrics with `rankindex()`
 7. Calculate community distances using that metric.
 
-<!----------------------------slide boundary--------------------------------->
+
 
 # Diversity metrics
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Alpha diversity
 
@@ -720,7 +711,7 @@ site.richness[1:18]
  93  84  90  94 101  85  82  88  90  94  87  84  93  98  93  93  93  89 
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Alpha diversity | Other metrics
 
@@ -732,11 +723,13 @@ site.fisher[1:12]
 ```
 
 ```
-    1     2     3     4     5     6     7     8     9    10    11    12 
-35.67 30.99 33.32 33.92 37.96 32.49 30.58 33.45 35.67 34.82 34.21 34.12 
+       1        2        3        4        5        6        7        8 
+35.67297 30.99091 33.32033 33.92209 37.96423 32.49374 30.58383 33.44981 
+       9       10       11       12 
+35.67236 34.82320 34.20590 34.12041 
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Alpha diversity | Other metrics
 
@@ -748,11 +741,13 @@ site.shannon[1:12]
 ```
 
 ```
-    1     2     3     4     5     6     7     8     9    10    11    12 
-4.018 3.848 3.814 3.977 3.970 3.777 3.837 3.908 3.761 3.890 3.860 3.698 
+       1        2        3        4        5        6        7        8 
+4.018412 3.848471 3.814060 3.976563 3.969940 3.776575 3.836811 3.908381 
+       9       10       11       12 
+3.761331 3.889803 3.859814 3.698414 
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Rarefaction
 
@@ -769,7 +764,7 @@ This finds the plot with the least number of individuals
 BCI.raremax <- min(apply(BCI, 1, sum))
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Rarefaction
 
@@ -782,9 +777,9 @@ plot(BCI.S, BCI.Srare, xlab = "Observed No. of Species", ylab = "Rarefied No. of
 abline(0, 1)
 ```
 
-![plot of chunk rarefac 3](./intro-basics_files/figure-html/rarefac 3.png) 
+![](intro-basics_files/figure-html/rarefac-3-1.png) 
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Rarefaction
 
@@ -794,9 +789,9 @@ Put it all together
 rarecurve(BCI, step = 20, sample = BCI.raremax, col = "blue", cex = 0.6)
 ```
 
-![plot of chunk rarefac 4](./intro-basics_files/figure-html/rarefac 4.png) 
+![](intro-basics_files/figure-html/rarefac-4-1.png) 
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Beta diversity
 
@@ -818,14 +813,14 @@ No. of Negative Eigenvalues: 6
 
 Average distance to median:
 1011568.985 1011668.985 1011768.985 1011868.985 1011968.985 
-      0.282       0.266       0.314       0.294       0.334 
+     0.2817      0.2663      0.3140      0.2945      0.3339 
 
 Eigenvalues for PCoA axes:
-PCoA1 PCoA2 PCoA3 PCoA4 PCoA5 PCoA6 PCoA7 PCoA8 
-1.016 0.707 0.532 0.332 0.261 0.251 0.226 0.170 
+ PCoA1  PCoA2  PCoA3  PCoA4  PCoA5  PCoA6  PCoA7  PCoA8 
+1.0163 0.7067 0.5318 0.3316 0.2606 0.2507 0.2257 0.1703 
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Beta diversity {.smaller}
 
@@ -838,30 +833,17 @@ permutest(BCI.bray.bdisp)
 ```
 
 Permutation test for homogeneity of multivariate dispersions
+Permutation: free
+Number of permutations: 999
 
-Permutation Design:
-
-Blocks:
-  Defined by: none
-
-Plots:
-  Defined by: none
-
-Within Plots:
-  Permutation type: free
-
-Permutation details:
-  Number of permutations requested: 999
-  Max. number of permutations allowed: 9999
-  Evaluate all permutations?: No.  Activation limit: 99
 Response: Distances
-          Df Sum Sq Mean Sq   F N.Perm Pr(>F)
-Groups     4 0.0283 0.00708 1.8    999   0.13
-Residuals 45 0.1766 0.00392                  
+          Df   Sum Sq   Mean Sq      F N.Perm Pr(>F)
+Groups     4 0.028314 0.0070785 1.8041    999  0.165
+Residuals 45 0.176555 0.0039235                     
 ```
 
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Beta diversity
 
@@ -871,9 +853,9 @@ Plot of within-group multivariate dispersion
 plot(BCI.bray.bdisp)
 ```
 
-![plot of chunk beta 3](./intro-basics_files/figure-html/beta 3.png) 
+![](intro-basics_files/figure-html/beta-3-1.png) 
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Beta diversity
 
@@ -883,9 +865,9 @@ Boxplot of within-group multivariate dispersion
 boxplot(BCI.bray.bdisp)
 ```
 
-![plot of chunk beta 4](./intro-basics_files/figure-html/beta 4.png) 
+![](intro-basics_files/figure-html/beta-4-1.png) 
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Beta diversity | ANOSIM
 
@@ -901,13 +883,14 @@ Call:
 anosim(dat = BCI.bray, grouping = as.factor(BCI.env$UTM.NS)) 
 Dissimilarity: bray 
 
-ANOSIM statistic R: 0.102 
-      Significance: 0.006 
+ANOSIM statistic R: 0.1019 
+      Significance: 0.005 
 
-Based on  999  permutations
+Permutation: free
+Number of permutations: 999
 ```
 
-<!----------------------------slide boundary--------------------------------->
+
 
 ## Beta diversity | ANOSIM
 
@@ -917,8 +900,8 @@ Analysis of similarities
 plot(BCI.bray.anosim)
 ```
 
-![plot of chunk beta 6](./intro-basics_files/figure-html/beta 6.png) 
+![](intro-basics_files/figure-html/beta-6-1.png) 
 
 
-<!----------------------------slide boundary--------------------------------->
+
 
