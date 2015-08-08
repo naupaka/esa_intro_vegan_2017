@@ -1,7 +1,7 @@
 ---
 title: "Constrained Ordination & Permutation Tests"
 author: "Naupaka Zimmerman and Gavin Simpson"
-date: "August 9, 2014 • ESA 2014"
+date: "August 8, 2015 • ESA 2015"
 bibliography: constrained-ordination.bib
 
 output:
