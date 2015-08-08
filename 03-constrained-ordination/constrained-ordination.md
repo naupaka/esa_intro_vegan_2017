@@ -1,6 +1,6 @@
 # Constrained Ordination & Permutation Tests
 Naupaka Zimmerman and Gavin Simpson  
-August 9, 2014 • ESA 2014  
+August 8, 2015 • ESA 2015  
 
 
 
@@ -30,16 +30,16 @@ Call: cca(formula = varespec ~ N + P + K + Ca + Mg + S + Al + Fe +
 Mn + Zn + Mo + Baresoil + Humdepth + pH, data = varechem)
 
               Inertia Proportion Rank
-Total           2.083      1.000     
-Constrained     1.441      0.692   14
-Unconstrained   0.642      0.308    9
+Total          2.0832     1.0000     
+Constrained    1.4415     0.6920   14
+Unconstrained  0.6417     0.3080    9
 Inertia is mean squared contingency coefficient 
 
 Eigenvalues for constrained axes:
-   CCA1    CCA2    CCA3    CCA4    CCA5    CCA6    CCA7    CCA8    CCA9 
-0.43887 0.29178 0.16285 0.14213 0.11795 0.08903 0.07029 0.05836 0.03114 
-  CCA10   CCA11   CCA12   CCA13   CCA14 
-0.01329 0.00836 0.00654 0.00616 0.00473 
+  CCA1   CCA2   CCA3   CCA4   CCA5   CCA6   CCA7   CCA8   CCA9  CCA10 
+0.4389 0.2918 0.1628 0.1421 0.1180 0.0890 0.0703 0.0584 0.0311 0.0133 
+ CCA11  CCA12  CCA13  CCA14 
+0.0084 0.0065 0.0062 0.0047 
 
 Eigenvalues for unconstrained axes:
     CA1     CA2     CA3     CA4     CA5     CA6     CA7     CA8     CA9 
@@ -60,17 +60,17 @@ rda1
 Call: rda(formula = varespec ~ N + P + K + Ca + Mg + S + Al + Fe +
 Mn + Zn + Mo + Baresoil + Humdepth + pH, data = varechem)
 
-              Inertia Proportion Rank
-Total          1826.0        1.0     
-Constrained    1460.0        0.8   14
-Unconstrained   366.0        0.2    9
+                Inertia Proportion Rank
+Total         1825.7000     1.0000     
+Constrained   1459.9000     0.7997   14
+Unconstrained  365.8000     0.2003    9
 Inertia is variance 
 
 Eigenvalues for constrained axes:
-   RDA1    RDA2    RDA3    RDA4    RDA5    RDA6    RDA7    RDA8    RDA9 
-820.104 399.285 102.562  47.632  26.838  24.048  19.064  10.167   4.429 
-  RDA10   RDA11   RDA12   RDA13   RDA14 
-  2.272   1.535   0.926   0.716   0.312 
+ RDA1  RDA2  RDA3  RDA4  RDA5  RDA6  RDA7  RDA8  RDA9 RDA10 RDA11 RDA12 
+820.1 399.3 102.6  47.6  26.8  24.0  19.1  10.2   4.4   2.3   1.5   0.9 
+RDA13 RDA14 
+  0.7   0.3 
 
 Eigenvalues for unconstrained axes:
    PC1    PC2    PC3    PC4    PC5    PC6    PC7    PC8    PC9 
@@ -121,12 +121,14 @@ eigenvals(cca1)
 ```
 
 ```
-  CCA1   CCA2   CCA3   CCA4   CCA5   CCA6   CCA7   CCA8   CCA9  CCA10 
-0.4389 0.2918 0.1628 0.1421 0.1180 0.0890 0.0703 0.0584 0.0311 0.0133 
- CCA11  CCA12  CCA13  CCA14    CA1    CA2    CA3    CA4    CA5    CA6 
-0.0084 0.0065 0.0062 0.0047 0.1978 0.1419 0.1012 0.0708 0.0533 0.0333 
-   CA7    CA8    CA9 
-0.0189 0.0151 0.0095 
+     CCA1      CCA2      CCA3      CCA4      CCA5      CCA6      CCA7 
+0.4388704 0.2917753 0.1628465 0.1421302 0.1179519 0.0890291 0.0702945 
+     CCA8      CCA9     CCA10     CCA11     CCA12     CCA13     CCA14 
+0.0583592 0.0311408 0.0132944 0.0083644 0.0065385 0.0061563 0.0047332 
+      CA1       CA2       CA3       CA4       CA5       CA6       CA7 
+0.1977645 0.1419256 0.1011741 0.0707868 0.0533034 0.0332994 0.0188676 
+      CA8       CA9 
+0.0151044 0.0094876 
 ```
 
 ## Extracting axis scores
@@ -162,13 +164,13 @@ head(scores(cca1, choices = 1:2, display = "sites"))
 ```
 
 ```
-      CCA1    CCA2
-18  0.1785 -1.0599
-15 -0.9702 -0.1971
-24 -1.2798  0.4764
-27 -1.5009  0.6522
-23 -0.5981 -0.1840
-19 -0.1103  0.7143
+         CCA1       CCA2
+18  0.1784733 -1.0598842
+15 -0.9702382 -0.1971387
+24 -1.2798478  0.4764498
+27 -1.5009195  0.6521559
+23 -0.5980933 -0.1840362
+19 -0.1102881  0.7143142
 ```
 
 ## Scalings...
@@ -233,7 +235,7 @@ plot(cca1)
 plot(cca1)
 ```
 
-![plot of chunk triplot-2](./constrained-ordination_files/figure-html/triplot-2.png) 
+![](constrained-ordination_files/figure-html/triplot-2-1.png) 
 
 # Model building
 
@@ -275,8 +277,8 @@ Eigenvalues for constrained axes:
 0.3756 0.2342 0.1407 0.1323 0.1068 0.0561 
 
 Eigenvalues for unconstrained axes:
-   CA1    CA2    CA3    CA4    CA5    CA6    CA7    CA8 
-0.2758 0.1541 0.1354 0.1180 0.0889 0.0551 0.0492 0.0378 
+    CA1     CA2     CA3     CA4     CA5     CA6     CA7     CA8 
+0.27577 0.15411 0.13536 0.11803 0.08887 0.05511 0.04919 0.03781 
 (Showed only 8 of all 17 unconstrained eigenvalues)
 ```
 
@@ -340,14 +342,14 @@ mods
 Call: cca(formula = varespec ~ Al + P + K, data = varechem)
 
               Inertia Proportion Rank
-Total           2.083      1.000     
-Constrained     0.644      0.309    3
-Unconstrained   1.439      0.691   20
+Total          2.0832     1.0000     
+Constrained    0.6441     0.3092    3
+Unconstrained  1.4391     0.6908   20
 Inertia is mean squared contingency coefficient 
 
 Eigenvalues for constrained axes:
- CCA1  CCA2  CCA3 
-0.362 0.170 0.113 
+  CCA1   CCA2   CCA3 
+0.3616 0.1700 0.1126 
 
 Eigenvalues for unconstrained axes:
    CA1    CA2    CA3    CA4    CA5    CA6    CA7    CA8 
@@ -365,10 +367,10 @@ mods$anova
 ```
 
 ```
-     Df AIC    F N.Perm Pr(>F)   
-+ Al  1 129 3.67    199  0.005 **
-+ P   1 128 2.50    199  0.010 **
-+ K   1 127 2.17    999  0.037 * 
+     Df    AIC      F Pr(>F)   
++ Al  1 128.61 3.6749  0.005 **
++ P   1 127.91 2.5001  0.005 **
++ K   1 127.44 2.1688  0.035 * 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -389,9 +391,9 @@ Call: cca(formula = varespec ~ P + K + Mg + S + Mn + Mo + Baresoil
 + Humdepth, data = varechem)
 
               Inertia Proportion Rank
-Total           2.083      1.000     
-Constrained     1.117      0.536    8
-Unconstrained   0.967      0.464   15
+Total          2.0832     1.0000     
+Constrained    1.1165     0.5360    8
+Unconstrained  0.9667     0.4640   15
 Inertia is mean squared contingency coefficient 
 
 Eigenvalues for constrained axes:
@@ -484,11 +486,13 @@ set.seed(42)
 
 ```
 Permutation test for cca under reduced model
+Permutation: free
+Number of permutations: 999
 
 Model: cca(formula = varespec ~ N + P + K + Ca + Mg + S + Al + Fe + Mn + Zn + Mo + Baresoil + Humdepth + pH, data = varechem)
-         Df Chisq    F N.Perm Pr(>F)  
-Model    14  1.44 1.44   1599  0.036 *
-Residual  9  0.64                     
+         Df ChiSquare      F Pr(>F)  
+Model    14   1.44148 1.4441  0.041 *
+Residual  9   0.64171                
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -507,11 +511,13 @@ perm
 
 ```
 Permutation test for cca under reduced model
+Permutation: free
+Number of permutations: 999
 
 Model: cca(formula = varespec ~ N + P + K + Ca + Mg + S + Al + Fe + Mn + Zn + Mo + Baresoil + Humdepth + pH, data = varechem)
-         Df Chisq    F N.Perm Pr(>F)  
-Model    14  1.44 1.44   1599  0.036 *
-Residual  9  0.64                     
+         Df ChiSquare      F Pr(>F)  
+Model    14   1.44148 1.4441  0.041 *
+Residual  9   0.64171                
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -526,8 +532,9 @@ args(anova.cca)
 ```
 
 ```
-function (object, alpha = 0.05, beta = 0.01, step = 100, perm.max = 9999, 
-    by = NULL, ...) 
+function (object, ..., permutations = how(nperm = 999), by = NULL, 
+    model = c("reduced", "direct", "full"), parallel = getOption("mc.cores"), 
+    strata = NULL, cutoff = 1, scope = NULL) 
 NULL
 ```
 
@@ -565,12 +572,17 @@ anova(mods, by = "axis")
 ```
 
 ```
+Permutation test for cca under reduced model
+Marginal tests for axes
+Permutation: free
+Number of permutations: 999
+
 Model: cca(formula = varespec ~ Al + P + K, data = varechem)
-         Df Chisq    F N.Perm Pr(>F)   
-CCA1      1  0.36 5.02    199  0.005 **
-CCA2      1  0.17 2.36    299  0.017 * 
-CCA3      1  0.11 1.57     99  0.160   
-Residual 20  1.44                      
+         Df ChiSquare      F Pr(>F)    
+CCA1      1   0.36156 5.0249  0.001 ***
+CCA2      1   0.16996 2.3621  0.011 *  
+CCA3      1   0.11262 1.5651  0.124    
+Residual 20   1.43906                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -591,13 +603,15 @@ anova(mods, by = "terms")
 ```
 Permutation test for cca under reduced model
 Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
 
 Model: cca(formula = varespec ~ Al + P + K, data = varechem)
-         Df Chisq    F N.Perm Pr(>F)   
-Al        1  0.30 4.14     99   0.01 **
-P         1  0.19 2.64     99   0.01 **
-K         1  0.16 2.17     99   0.03 * 
-Residual 20  1.44                      
+         Df ChiSquare      F Pr(>F)    
+Al        1   0.29817 4.1440  0.001 ***
+P         1   0.18991 2.6393  0.011 *  
+K         1   0.15605 2.1688  0.024 *  
+Residual 20   1.43906                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -616,13 +630,15 @@ anova(mods, by = "margin")
 ```
 Permutation test for cca under reduced model
 Marginal effects of terms
+Permutation: free
+Number of permutations: 999
 
 Model: cca(formula = varespec ~ Al + P + K, data = varechem)
-         Df Chisq    F N.Perm Pr(>F)   
-Al        1  0.31 4.33    199  0.005 **
-P         1  0.17 2.34    199  0.015 * 
-K         1  0.16 2.17    299  0.020 * 
-Residual 20  1.44                      
+         Df ChiSquare      F Pr(>F)    
+Al        1   0.31184 4.3340  0.001 ***
+P         1   0.16810 2.3362  0.012 *  
+K         1   0.15605 2.1688  0.025 *  
+Residual 20   1.43906                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -656,18 +672,20 @@ anova(m1)
 
 ```
 Permutation test for cca under reduced model
+Permutation: free
+Number of permutations: 999
 
 Model: cca(formula = spp ~ Ca + Mg + Fe + K + Na + Si + SO4 + PO4 + NO3 + NH3 + Cl + Corg + pH + conduct + slope, data = env)
-         Df Chisq    F N.Perm Pr(>F)   
-Model    15  1.56 1.50    199  0.005 **
-Residual 54  3.75                      
+         Df ChiSquare     F Pr(>F)    
+Model    15    1.5597 1.497  0.001 ***
+Residual 54    3.7509                 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ## Constrained ordination worked example | spring meadow vegetation
 
-![plot of chunk meadows-cca-full-triplot](./constrained-ordination_files/figure-html/meadows-cca-full-triplot.png) 
+![](constrained-ordination_files/figure-html/meadows-cca-full-triplot-1.png) 
 
 ## Constrained ordination worked example | spring meadow vegetation
 
@@ -687,9 +705,9 @@ Call: cca(formula = spp ~ Ca + conduct + Corg + Na + NH3 + Fe +
 pH, data = env)
 
               Inertia Proportion Rank
-Total           5.310      1.000     
-Constrained     0.990      0.186    7
-Unconstrained   4.320      0.814   62
+Total          5.3110     1.0000     
+Constrained    0.9900     0.1864    7
+Unconstrained  4.3210     0.8136   62
 Inertia is mean squared contingency coefficient 
 
 Eigenvalues for constrained axes:
@@ -697,14 +715,14 @@ Eigenvalues for constrained axes:
 0.4268 0.1447 0.1116 0.0936 0.0760 0.0719 0.0652 
 
 Eigenvalues for unconstrained axes:
-  CA1   CA2   CA3   CA4   CA5   CA6   CA7   CA8 
-0.273 0.195 0.167 0.150 0.146 0.142 0.133 0.122 
+    CA1     CA2     CA3     CA4     CA5     CA6     CA7     CA8 
+0.27251 0.19518 0.16703 0.14993 0.14606 0.14168 0.13292 0.12154 
 (Showed only 8 of all 62 unconstrained eigenvalues)
 ```
 
 ## Constrained ordination worked example | spring meadow vegetation
 
-![plot of chunk meadows-cca-reduced-triplot](./constrained-ordination_files/figure-html/meadows-cca-reduced-triplot.png) 
+![](constrained-ordination_files/figure-html/meadows-cca-reduced-triplot-1.png) 
 
 ## Constrained ordination worked example | spring meadow vegetation
 
@@ -714,14 +732,14 @@ m2$anova
 ```
 
 ```
-          Df AIC    F N.Perm Pr(>F)   
-+ Ca       1 453 4.79    199  0.005 **
-+ conduct  1 453 1.79    199  0.005 **
-+ Corg     1 454 1.60    199  0.005 **
-+ Na       1 454 1.58    199  0.005 **
-+ NH3      1 454 1.45    199  0.015 * 
-+ Fe       1 455 1.34    299  0.013 * 
-+ pH       1 455 1.28    499  0.026 * 
+          Df    AIC      F Pr(>F)   
++ Ca       1 453.14 4.7893  0.005 **
++ conduct  1 453.29 1.7915  0.005 **
++ Corg     1 453.61 1.6011  0.005 **
++ Na       1 453.93 1.5827  0.005 **
++ NH3      1 454.36 1.4507  0.020 * 
++ Fe       1 454.89 1.3386  0.015 * 
++ pH       1 455.46 1.2756  0.015 * 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -740,7 +758,7 @@ m4 <- ordistep(lwr, scope = formula(m3), perm.max = 199, trace = FALSE)
 
 ## Constrained ordination worked example | spring meadow vegetation
 
-![plot of chunk meadows-rda-reduced-triplot](./constrained-ordination_files/figure-html/meadows-rda-reduced-triplot.png) 
+![](constrained-ordination_files/figure-html/meadows-rda-reduced-triplot-1.png) 
 
 ## Constrained ordination worked example | spring meadow vegetation
 
@@ -753,15 +771,15 @@ m5$anova
 ```
 
 ```
-                R2.adj Df   AIC     F N.Perm Pr(>F)   
-+ Ca             0.126  1 -41.8 10.94    199  0.005 **
-+ NH3            0.146  1 -42.5  2.62    199  0.005 **
-+ conduct        0.163  1 -42.9  2.36    199  0.005 **
-+ Si             0.177  1 -43.2  2.11    199  0.005 **
-+ Corg           0.185  1 -42.9  1.64    199  0.010 **
-+ NO3            0.193  1 -42.7  1.59    199  0.015 * 
-+ pH             0.200  1 -42.4  1.56    199  0.020 * 
-<All variables>  0.203                                
+                 R2.adj Df     AIC       F Pr(>F)   
++ Ca            0.12588  1 -41.779 10.9370  0.002 **
++ NH3           0.14628  1 -42.468  2.6242  0.002 **
++ conduct       0.16322  1 -42.925  2.3570  0.002 **
++ Si            0.17711  1 -43.164  2.1136  0.002 **
++ Corg          0.18518  1 -42.940  1.6442  0.006 **
++ NO3           0.19257  1 -42.680  1.5853  0.018 * 
++ pH            0.19966  1 -42.417  1.5583  0.010 **
+<All variables> 0.20332                             
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -793,13 +811,13 @@ head(goodness(mods))
 ```
 
 ```
-             CCA1     CCA2    CCA3
-Cal.vul 0.0062472 0.318908 0.82547
-Emp.nig 0.1164702 0.137605 0.19532
-Led.pal 0.0999090 0.169698 0.18242
-Vac.myr 0.2361483 0.240516 0.24067
-Vac.vit 0.1523705 0.156502 0.21105
-Pin.syl 0.0009244 0.004802 0.00601
+                 CCA1        CCA2      CCA3
+Callvulg 0.0062471656 0.318907619 0.8254657
+Empenigr 0.1164701677 0.137604904 0.1953245
+Rhodtome 0.0999089739 0.169697909 0.1824153
+Vaccmyrt 0.2361482843 0.240516323 0.2406730
+Vaccviti 0.1523704591 0.156502301 0.2110550
+Pinusylv 0.0009244423 0.004802076 0.0060096
 ```
 
 ```r
@@ -807,8 +825,8 @@ head(goodness(mods, summarize = TRUE))
 ```
 
 ```
-Cal.vul Emp.nig Led.pal Vac.myr Vac.vit Pin.syl 
-0.82547 0.19532 0.18242 0.24067 0.21105 0.00601 
+ Callvulg  Empenigr  Rhodtome  Vaccmyrt  Vaccviti  Pinusylv 
+0.8254657 0.1953245 0.1824153 0.2406730 0.2110550 0.0060096 
 ```
 
 ## Diagnostics for constrained ordinations | inertia decomposition
@@ -827,13 +845,13 @@ head(inertcomp(mods, proportional = TRUE))
 ```
 
 ```
-            CCA     CA
-Cal.vul 0.82547 0.1745
-Emp.nig 0.19532 0.8047
-Led.pal 0.18242 0.8176
-Vac.myr 0.24067 0.7593
-Vac.vit 0.21105 0.7889
-Pin.syl 0.00601 0.9940
+               CCA        CA
+Callvulg 0.8254657 0.1745343
+Empenigr 0.1953245 0.8046755
+Rhodtome 0.1824153 0.8175847
+Vaccmyrt 0.2406730 0.7593270
+Vaccviti 0.2110550 0.7889450
+Pinusylv 0.0060096 0.9939904
 ```
 
 ## Diagnostics for constrained ordinations | species-environment correlations
@@ -855,8 +873,8 @@ spenvcor(mods)
 ```
 
 ```
-  CCA1   CCA2   CCA3 
-0.8555 0.8133 0.8793 
+     CCA1      CCA2      CCA3 
+0.8554808 0.8132873 0.8792797 
 ```
 
 ## Diagnostics for constrained ordinations | interset correlations
@@ -876,10 +894,10 @@ intersetcor(mods)
 ```
 
 ```
-      CCA1    CCA2   CCA3
-Al  0.7356 -0.1302 0.4260
-P  -0.3590 -0.6111 0.4479
-K  -0.3768 -0.1339 0.7760
+         CCA1       CCA2      CCA3
+Al  0.7356151 -0.1302334 0.4259623
+P  -0.3589749 -0.6110772 0.4478933
+K  -0.3768462 -0.1339192 0.7760441
 ```
 
 # Restricted permutation tests
@@ -970,7 +988,7 @@ shuffle(10, control = how(within = Within(type = "series")))
 ```
 
 ```
- [1]  1  2  3  4  5  6  7  8  9 10
+ [1]  9 10  1  2  3  4  5  6  7  8
 ```
 
 ## Restricted permutations with **permute** | spatial grids
@@ -1192,9 +1210,9 @@ Permutation: none
 Number of permutations: 199
 
 Model: rda(formula = spp ~ year + year:mowing + year:fertilizer + year:removal + Condition(plotid), data = env)
-         Df Variance    F Pr(>F)   
-Model     4      159 6.42  0.005 **
-Residual 90      556               
+         Df Variance      F Pr(>F)   
+Model     4   158.85 6.4247  0.005 **
+Residual 90   556.30                 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -1211,12 +1229,12 @@ Permutation: none
 Number of permutations: 199
 
 Model: rda(formula = spp ~ year + year:mowing + year:fertilizer + year:removal + Condition(plotid), data = env)
-         Df Variance     F Pr(>F)   
-RDA1      1       89 14.42  0.005 **
-RDA2      1       34  5.55  0.005 **
-RDA3      1       27  4.29  0.010 **
-RDA4      1        9  1.45  0.600   
-Residual 90      556                
+         Df Variance       F Pr(>F)   
+RDA1      1    89.12 14.4173  0.005 **
+RDA2      1    34.28  5.5458  0.005 **
+RDA3      1    26.52  4.2900  0.010 **
+RDA4      1     8.94  1.4458  0.600   
+Residual 90   556.30                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -1236,9 +1254,9 @@ Permutation: none
 Number of permutations: 199
 
 Model: rda(formula = spp ~ year:mowing + year:fertilizer + year:removal + Condition(year + plotid), data = env)
-         Df Variance    F Pr(>F)   
-Model     3       99 5.35  0.005 **
-Residual 90      556               
+         Df Variance      F Pr(>F)   
+Model     3    99.24 5.3517  0.005 **
+Residual 90   556.30                 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -1255,11 +1273,11 @@ Permutation: none
 Number of permutations: 199
 
 Model: rda(formula = spp ~ year:mowing + year:fertilizer + year:removal + Condition(year + plotid), data = env)
-         Df Variance    F Pr(>F)   
-RDA1      1       54 8.76  0.005 **
-RDA2      1       34 5.55  0.005 **
-RDA3      1       11 1.75  0.500   
-Residual 90      556               
+         Df Variance      F Pr(>F)   
+RDA1      1    54.14 8.7595  0.005 **
+RDA2      1    34.28 5.5458  0.005 **
+RDA3      1    10.82 1.7499  0.500   
+Residual 90   556.30                 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
