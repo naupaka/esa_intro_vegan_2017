@@ -903,5 +903,27 @@ plot(BCI.bray.anosim)
 ![](intro-basics_files/figure-html/beta-6-1.png) 
 
 
+## PERMANOVA using `adonis`
 
+Analysis of variance using distance matrices and for fitting linear models to distance matrices
+
+```r
+adonis(BCI ~ BCI.env$Age.cat)
+```
+
+```
+
+Call:
+adonis(formula = BCI ~ BCI.env$Age.cat) 
+
+Permutation: free
+Number of permutations: 999
+
+Terms added sequentially (first to last)
+
+                Df SumsOfSqs  MeanSqs F.Model      R2 Pr(>F)
+BCI.env$Age.cat  1    0.0786 0.078572 0.72989 0.01498  0.736
+Residuals       48    5.1671 0.107648         0.98502       
+Total           49    5.2457                  1.00000       
+```
 

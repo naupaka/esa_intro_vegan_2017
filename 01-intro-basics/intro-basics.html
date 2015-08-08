@@ -723,7 +723,27 @@ Number of permutations: 999</pre>
 
 <pre class = 'prettyprint lang-r'>plot(BCI.bray.anosim)</pre>
 
-<img src='intro-basics_files/figure-html/beta-6-1.png' title=''/></article></slide>
+<img src='intro-basics_files/figure-html/beta-6-1.png' title=''/>
+
+</article></slide><slide class=''><hgroup><h2>PERMANOVA using <code>adonis</code></h2></hgroup><article  id="permanova-using-adonis">
+
+<p>Analysis of variance using distance matrices and for fitting linear models to distance matrices</p>
+
+<pre class = 'prettyprint lang-r'>adonis(BCI ~ BCI.env$Age.cat)</pre>
+
+<pre >
+Call:
+adonis(formula = BCI ~ BCI.env$Age.cat) 
+
+Permutation: free
+Number of permutations: 999
+
+Terms added sequentially (first to last)
+
+                Df SumsOfSqs  MeanSqs F.Model      R2 Pr(&gt;F)
+BCI.env$Age.cat  1    0.0786 0.078572 0.72989 0.01498  0.736
+Residuals       48    5.1671 0.107648         0.98502       
+Total           49    5.2457                  1.00000       </pre></article></slide>
 
 
   <slide class="backdrop"></slide>

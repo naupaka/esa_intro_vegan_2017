@@ -551,5 +551,10 @@ plot(BCI.bray.anosim)
 ```
 
 
+## PERMANOVA using `adonis`
 
+Analysis of variance using distance matrices and for fitting linear models to distance matrices
+```{r adonis}
+adonis(BCI ~ BCI.env$Age.cat)
+```
 
