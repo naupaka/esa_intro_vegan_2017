@@ -158,7 +158,7 @@ dune.bray.ord <- metaMDS(dune, distance = "bray", k = 2, trymax = 50)
 plot(dune.bray.ord)
 ```
 
-![](ordination_files/figure-html/NMDS 2-1.png) 
+![](ordination_files/figure-html/NMDS-2-1.png) 
 
 
 
@@ -170,7 +170,7 @@ plot(dune.bray.ord)
 plot(dune.bray.ord, display = "sites")
 ```
 
-![](ordination_files/figure-html/NMDS 3-1.png) 
+![](ordination_files/figure-html/NMDS-3-1.png) 
 
 
 
@@ -181,7 +181,7 @@ plot(dune.bray.ord, display = "sites")
 plot(dune.bray.ord, display = "species")
 ```
 
-![](ordination_files/figure-html/NMDS 4-1.png) 
+![](ordination_files/figure-html/NMDS-4-1.png) 
 
 
 
@@ -192,7 +192,7 @@ plot(dune.bray.ord, display = "species")
 plot(dune.bray.ord, display = "sites", type = "t")
 ```
 
-![](ordination_files/figure-html/NMDS 5-1.png) 
+![](ordination_files/figure-html/NMDS-5-1.png) 
 
 
 
@@ -205,7 +205,7 @@ set.seed(314) ## make reproducible
 ordipointlabel(dune.bray.ord, display = "sites", scaling = 3, add = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS 5.2-1.png) 
+![](ordination_files/figure-html/NMDS-5.2-1.png) 
 
 
 
@@ -218,7 +218,7 @@ set.seed(314) ## make reproducible
 ordipointlabel(dune.bray.ord, display = "species", scaling = 3, add = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS 5.5-1.png) 
+![](ordination_files/figure-html/NMDS-5.5-1.png) 
 
 
 
@@ -231,7 +231,7 @@ set.seed(314) ## make reproducible
 ordipointlabel(dune.bray.ord, scaling = 3, add = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS 5.6-1.png) 
+![](ordination_files/figure-html/NMDS-5.6-1.png) 
 
 
 
@@ -243,7 +243,7 @@ ordipointlabel(dune.bray.ord, scaling = 3, add = TRUE)
 plot(dune.bray.ord, display = "sites", cex=2)
 ```
 
-![](ordination_files/figure-html/NMDS 6-1.png) 
+![](ordination_files/figure-html/NMDS-6-1.png) 
 
 
 
@@ -267,12 +267,12 @@ legend("topright", legend = levels(dune.env$Management), bty = "n",
                       col = colors.vec, pch = 21, pt.bg = colors.vec)
 ```
 
-![](ordination_files/figure-html/NMDS 7-1.png) 
+![](ordination_files/figure-html/NMDS-7-1.png) 
 
 
 
 ## Modifying the shape of points | pch()
-![](ordination_files/figure-html/NMDS 8-1.png) 
+![](ordination_files/figure-html/NMDS-8-1.png) 
 
 
 
@@ -287,7 +287,7 @@ legend("topright", legend = levels(dune.env$Use), bty = "n",
                       col = "black", pch = shapes.vec, pt.bg = "black")
 ```
 
-![](ordination_files/figure-html/NMDS 9-1.png) 
+![](ordination_files/figure-html/NMDS-9-1.png) 
 
 
 
@@ -307,7 +307,7 @@ legend(1.4,1.05, legend = levels(dune.env$Use), bty = "n",
                       col = "black", pch = shapes.vec, pt.bg = "black")
 ```
 
-![](ordination_files/figure-html/NMDS 10-1.png) 
+![](ordination_files/figure-html/NMDS-10-1.png) 
 
 
 
@@ -319,7 +319,7 @@ legend(1.4,1.05, legend = levels(dune.env$Use), bty = "n",
 plot(dune.bray.ord, display = "sites", cex=2)
 ```
 
-![](ordination_files/figure-html/NMDS 11-1.png) 
+![](ordination_files/figure-html/NMDS-11-1.png) 
 
 
 
@@ -331,7 +331,7 @@ plot(dune.bray.ord, display = "sites", cex=2)
 ordihull(dune.bray.ord,groups = dune.env$Management, label = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS 12-1.png) 
+![](ordination_files/figure-html/NMDS-12-1.png) 
 
 
 
@@ -343,7 +343,7 @@ plot(dune.bray.ord, display = "sites", cex=2)
 ordihull(dune.bray.ord,groups = dune.env$Management, label = TRUE, col = "blue")
 ```
 
-![](ordination_files/figure-html/NMDS 13-1.png) 
+![](ordination_files/figure-html/NMDS-13-1.png) 
 
 
 
@@ -356,7 +356,7 @@ ordihull(dune.bray.ord,groups = dune.env$Management, label = TRUE, col = "blue")
 ordispider(dune.bray.ord,groups = dune.env$Management, label = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS 14-1.png) 
+![](ordination_files/figure-html/NMDS-14-1.png) 
 
 
 
@@ -368,7 +368,7 @@ ordispider(dune.bray.ord,groups = dune.env$Management, label = TRUE)
 plot(dune.bray.ord, display = "sites", cex=2)
 ```
 
-![](ordination_files/figure-html/NMDS 15-1.png) 
+![](ordination_files/figure-html/NMDS-15-1.png) 
 
 
 
@@ -380,7 +380,7 @@ plot(dune.bray.ord, display = "sites", cex=2)
 ordispider(dune.bray.ord,groups = dune.env$Management, label = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS 16-1.png) 
+![](ordination_files/figure-html/NMDS-16-1.png) 
 
 
 
@@ -391,7 +391,7 @@ ordispider(dune.bray.ord,groups = dune.env$Management, label = TRUE)
 plot(dune.bray.ord, type = "n")
 ```
 
-![](ordination_files/figure-html/NMDS 17-1.png) 
+![](ordination_files/figure-html/NMDS-17-1.png) 
 
 
 
@@ -403,7 +403,7 @@ plot(dune.bray.ord, type = "n")
 points(dune.bray.ord,display = "sites", cex = 2)
 ```
 
-![](ordination_files/figure-html/NMDS 18-1.png) 
+![](ordination_files/figure-html/NMDS-18-1.png) 
 
 
 
@@ -414,7 +414,7 @@ points(dune.bray.ord,display = "sites", cex = 2)
 plot(dune.bray.ord, display = "sites", type = "n")
 ```
 
-![](ordination_files/figure-html/NMDS 19-1.png) 
+![](ordination_files/figure-html/NMDS-19-1.png) 
 
 
 
@@ -426,7 +426,7 @@ plot(dune.bray.ord, display = "sites", type = "n")
 points(dune.bray.ord, display = "sites", cex = 2)
 ```
 
-![](ordination_files/figure-html/NMDS 20-1.png) 
+![](ordination_files/figure-html/NMDS-20-1.png) 
 
 
 
@@ -439,7 +439,7 @@ points(dune.bray.ord,display = "sites", cex = 2)
 ordispider(dune.bray.ord,groups = dune.env$Management, label = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS 21-1.png) 
+![](ordination_files/figure-html/NMDS-21-1.png) 
 
 
 
@@ -452,7 +452,7 @@ points(dune.bray.ord, display = "sites", cex = 2)
 ordiellipse(dune.bray.ord,groups = dune.env$Management, label = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS 22-1.png) 
+![](ordination_files/figure-html/NMDS-22-1.png) 
 
 
 
@@ -464,7 +464,7 @@ points(dune.bray.ord,display = "sites", cex = 2)
 ordisurf(dune.bray.ord,dune.env$A1, add = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS 23-1.png) 
+![](ordination_files/figure-html/NMDS-23-1.png) 
 
 
 
@@ -481,7 +481,7 @@ dune.bray.ord.A1.fit
 ***VECTORS
 
               NMDS1   NMDS2     r2  Pr(>r)  
-dune.env$A1 0.96473 0.26323 0.3649 0.01798 *
+dune.env$A1 0.99008 0.14052 0.3798 0.01499 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 Permutation: free
@@ -500,7 +500,7 @@ plot(dune.bray.ord.A1.fit, add = TRUE)
 ordisurf(dune.bray.ord,dune.env$A1, add = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS 25-1.png) 
+![](ordination_files/figure-html/NMDS-25-1.png) 
 
 
 
