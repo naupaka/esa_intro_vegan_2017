@@ -374,7 +374,7 @@ ordisurf(dune.bray.ord,dune.env$A1, add = TRUE)
 ## Vectors in ordination space
 
 ```{r NMDS-24}
-dune.bray.ord.A1.fit <- envfit(dune.bray.ord ~ dune.env$A1, permutations = 1000)
+dune.bray.ord.A1.fit <- envfit(dune.bray.ord ~ A1, data = dune.env, permutations = 1000)
 dune.bray.ord.A1.fit
 ```
 
