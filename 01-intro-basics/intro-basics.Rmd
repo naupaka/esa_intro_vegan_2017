@@ -421,8 +421,9 @@ There is a data file in the workshop repositiory, in the `01-intro-basics/data/`
 3. Clean it up
 4. Load it into R
 5. Try at least two different methods to standardize the data.
-6. Evaluate at least five different community distance metrics with `rankindex()`
-7. Calculate community distances using that metric.
+6. Load the corresponding environmental data with `data(varechem)`
+7. Evaluate at least five different community distance metrics with `rankindex()`
+8. Calculate community distances using that metric
 
 
 
