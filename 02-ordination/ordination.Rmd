@@ -394,13 +394,13 @@ ordisurf(dune.bray.ord,dune.env$A1, add = TRUE)
 
 ## Activity
 
-Using the cleaned `varespec` data from the last exercise, and based on your finding of an appropriate distance metric:
+Using the cleaned `varespec` data from the last exercise, and the corresponding environmental data, loaded with `data(varechem)`:
 
 1. Load the data
 2. Create an NMDS plot using `metaMDS()`
-    * use the distance metric you chose earlier
+    * use the distance metric you selected earlier
         * if this doesn't work, `bray` is a decent fallback
     * Plot only the sites (not the species)
     * Make the points blue squares, size (cex = 2)
-    * Add an `ordispider`
+    * Add an `ordisurf` with one of the environmental variables
     * add a title with `main = "title"`
