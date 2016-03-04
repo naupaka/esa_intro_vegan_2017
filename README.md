@@ -9,6 +9,8 @@ Friday, March 3, 2016
 ## Instructor
 [Naupaka Zimmerman](http://naupaka.net)
 
+portions of the material were contributed by Gavin Simpson.
+
 ---
 
 ### Downloading code/data from this repository  
