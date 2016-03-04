@@ -1,6 +1,6 @@
 # Ordination with vegan
-Naupaka Zimmerman and Gavin Simpson  
-August 8, 2015 • ESA 2015  
+Naupaka Zimmerman  
+March 3, 2016  
 
 
 
@@ -30,6 +30,7 @@ August 8, 2015 • ESA 2015
 
 * Correspondance Analysis - CA
 * Principal Components Analysis - PCA
+* Principal Coordinates Analysis - PCoA
 * Nonmetric Multidimensional Scaling - NMDS
 
 
@@ -45,6 +46,7 @@ August 8, 2015 • ESA 2015
 
 * Correspondance Analysis - CA
 * Principal Components Analysis - PCA
+* Principal Coordinates Analysis - PCoA
 * **Nonmetric Multidimensional Scaling - NMDS**
 
 
@@ -60,37 +62,30 @@ setwd("your/working/dir")
 
 ```r
 library("vegan")
-data(dune)
-data(dune.env)
+MLM.otus <- read.csv("data/MLM_data_otus.csv", row.names = 1, header = TRUE)
+MLM.env <- read.csv("data/MLM_data_env.csv", row.names = 1, header = TRUE)
 ```
-Data from: Jongman, R.H.G, ter Braak, C.J.F & van Tongeren, O.F.R. (1987). Data Analysis in Community and Landscape Ecology. Pudoc, Wageningen.
 
-
-
-## Before we get started | species
+## Before we get started | OTUs
 
 
 ```r
-dim(dune)
+dim(MLM.otus)
 ```
 
 ```
-[1] 20 30
+[1]  130 4583
 ```
 
 ```r
-head(dune[,1:10], n=3)
+head(MLM.otus[,1:10], n=1)
 ```
 
 ```
-  Achimill Agrostol Airaprae Alopgeni Anthodor Bellpere Bromhord Chenalbu
-1        1        0        0        0        0        0        0        0
-2        3        0        0        2        0        3        4        0
-3        0        4        0        7        0        2        0        0
-  Cirsarve Comapalu
-1        0        0
-2        0        0
-3        0        0
+       OTU_0001 OTU_0002 OTU_0003 OTU_0004 OTU_0005 OTU_0006 OTU_0007
+w100y1     3430        1       75        3        0        6        0
+       OTU_0008 OTU_0009 OTU_0010
+w100y1        2      179        0
 ```
 
 
@@ -99,35 +94,65 @@ head(dune[,1:10], n=3)
 
 
 ```r
-head(dune.env, n=3)
+head(MLM.env, n=1)
 ```
 
 ```
-   A1 Moisture Management      Use Manure
-1 2.8        1         SF Haypastu      4
-2 3.5        1         BF Haypastu      2
-3 4.3        2         SF Haypastu      4
+  X Tree_ID site_ID date_collected     UTM_zone Easting Northing
+1 1  w100y1   w100y     2009-11-18 NAD83 Zone 5  280572  2179971
+  elevation_m side_of_island flow_age site_elevation_m
+1          92            Wet    Young              100
+  approx_annual_rainfall_mm approx_mean_annual_temp_deg_C flow_type
+1                      3900                          22.2  pahoehoe
 ```
+
+## Before we get started | environment
+
 
 ```r
-summary(dune.env)
+summary(MLM.env)
 ```
 
 ```
-       A1         Moisture Management       Use    Manure
- Min.   : 2.800   1:7      BF:3       Hayfield:7   0:6   
- 1st Qu.: 3.500   2:4      HF:5       Haypastu:8   1:3   
- Median : 4.200   4:2      NM:6       Pasture :5   2:4   
- Mean   : 4.850   5:7      SF:6                    3:4   
- 3rd Qu.: 5.725                                    4:3   
- Max.   :11.500                                          
+       X              Tree_ID       site_ID      date_collected
+ Min.   :  1.00   d1700y1 :  1   d1700y :10   2009-07-19:31    
+ 1st Qu.: 33.25   d1700y10:  1   d700o  :10   2009-07-15:30    
+ Median : 65.50   d1700y2 :  1   d700y  :10   2009-07-23:20    
+ Mean   : 65.50   d1700y3 :  1   w100o  :10   2009-07-17:10    
+ 3rd Qu.: 97.75   d1700y4 :  1   w100y  :10   2009-11-16:10    
+ Max.   :130.00   d1700y5 :  1   w1100o :10   2009-11-17:10    
+                  (Other) :124   (Other):70   (Other)   :19    
+         UTM_zone      Easting          Northing        elevation_m    
+ NAD83 Zone 5:130   Min.   :204253   Min.   :2167409   Min.   :  88.0  
+                    1st Qu.:243020   1st Qu.:2174894   1st Qu.: 701.5  
+                    Median :251002   Median :2178454   Median :1140.0  
+                    Mean   :248966   Mean   :2178870   Mean   :1192.4  
+                    3rd Qu.:269343   3rd Qu.:2179814   3rd Qu.:1770.2  
+                    Max.   :280654   Max.   :2194919   Max.   :2502.0  
+                                                                       
+ side_of_island  flow_age  site_elevation_m approx_annual_rainfall_mm
+ Dry: 30        Old  :60   Min.   : 100     Min.   : 500             
+ Wet:100        Young:70   1st Qu.: 700     1st Qu.:1000             
+                           Median :1100     Median :2200             
+                           Mean   :1177     Mean   :2673             
+                           3rd Qu.:1800     3rd Qu.:4000             
+                           Max.   :2400     Max.   :5500             
+                                                                     
+ approx_mean_annual_temp_deg_C    flow_type  
+ Min.   :10.60                 aa      : 20  
+ 1st Qu.:13.90                 pahoehoe:110  
+ Median :17.20                               
+ Mean   :16.75                               
+ 3rd Qu.:18.90                               
+ Max.   :22.20                               
+                                             
 ```
 
 
 
 ## Basic ordination and plotting
 
-There are two more basic NMDS ordination functions:
+There are two basic NMDS ordination functions:
 
 * `isoMDS()` from the MASS package
 * `monoMDS()` in vegan
@@ -144,7 +169,7 @@ This will do handy things like try to standardize your data if necessary and per
 
 
 ```r
-dune.bray.ord <- metaMDS(dune, distance = "bray", k = 2, trymax = 50)
+MLM.bray.ord <- metaMDS(MLM.otus, distance = "bray", k = 2, trymax = 50)
 ```
 
 **Show in RStudio**
@@ -155,10 +180,10 @@ dune.bray.ord <- metaMDS(dune, distance = "bray", k = 2, trymax = 50)
 
 
 ```r
-plot(dune.bray.ord)
+plot(MLM.bray.ord)
 ```
 
-![](ordination_files/figure-html/NMDS-2-1.png) 
+![](ordination_files/figure-html/NMDS-2-1.png)
 
 
 
@@ -167,10 +192,10 @@ plot(dune.bray.ord)
 
 
 ```r
-plot(dune.bray.ord, display = "sites")
+plot(MLM.bray.ord, display = "sites")
 ```
 
-![](ordination_files/figure-html/NMDS-3-1.png) 
+![](ordination_files/figure-html/NMDS-3-1.png)
 
 
 
@@ -178,10 +203,10 @@ plot(dune.bray.ord, display = "sites")
 
 
 ```r
-plot(dune.bray.ord, display = "species")
+plot(MLM.bray.ord, display = "species")
 ```
 
-![](ordination_files/figure-html/NMDS-4-1.png) 
+![](ordination_files/figure-html/NMDS-4-1.png)
 
 
 
@@ -189,10 +214,10 @@ plot(dune.bray.ord, display = "species")
 
 
 ```r
-plot(dune.bray.ord, display = "sites", type = "t")
+plot(MLM.bray.ord, display = "sites", type = "t")
 ```
 
-![](ordination_files/figure-html/NMDS-5-1.png) 
+![](ordination_files/figure-html/NMDS-5-1.png)
 
 
 
@@ -200,51 +225,22 @@ plot(dune.bray.ord, display = "sites", type = "t")
 
 
 ```r
-plot(dune.bray.ord, display = "sites")
+plot(MLM.bray.ord, display = "sites")
 set.seed(314) ## make reproducible
-ordipointlabel(dune.bray.ord, display = "sites", scaling = 3, add = TRUE)
+ordipointlabel(MLM.bray.ord, display = "sites", scaling = 3, add = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS-5.2-1.png) 
-
-
-
-## Site names instead of points
-
-
-```r
-plot(dune.bray.ord, display = "species")
-set.seed(314) ## make reproducible
-ordipointlabel(dune.bray.ord, display = "species", scaling = 3, add = TRUE)
-```
-
-![](ordination_files/figure-html/NMDS-5.5-1.png) 
-
-
-
-## Site names instead of points
-
-
-```r
-plot(dune.bray.ord)
-set.seed(314) ## make reproducible
-ordipointlabel(dune.bray.ord, scaling = 3, add = TRUE)
-```
-
-![](ordination_files/figure-html/NMDS-5.6-1.png) 
-
-
+![](ordination_files/figure-html/NMDS-5.2-1.png)
 
 
 ## Larger points
 
 
 ```r
-plot(dune.bray.ord, display = "sites", cex=2)
+plot(MLM.bray.ord, display = "sites", cex=2)
 ```
 
-![](ordination_files/figure-html/NMDS-6-1.png) 
-
+![](ordination_files/figure-html/NMDS-6-1.png)
 
 
 ## Modifying the display of the points with environmental data 
@@ -258,16 +254,16 @@ plot(dune.bray.ord, display = "sites", cex=2)
 ## Modifying the color of points {.smaller}
 
 ```r
-colors.vec <- c("red", "blue", "orange", "grey")
-plot(dune.bray.ord, display = "sites", type = "n")
-points(dune.bray.ord, display = "sites", cex=2, pch = 21, 
-       col = colors.vec[dune.env$Management], 
-       bg = colors.vec[dune.env$Management])
-legend("topright", legend = levels(dune.env$Management), bty = "n",
+colors.vec <- c("red", "blue")
+plot(MLM.bray.ord, display = "sites", type = "n")
+points(MLM.bray.ord, display = "sites", cex=2, pch = 21, 
+       col = colors.vec[MLM.env$side_of_island], 
+       bg = colors.vec[MLM.env$side_of_island])
+legend("topright", legend = levels(MLM.env$side_of_island), bty = "n",
                       col = colors.vec, pch = 21, pt.bg = colors.vec)
 ```
 
-![](ordination_files/figure-html/NMDS-7-1.png) 
+![](ordination_files/figure-html/NMDS-7-1.png)
 
 
 
@@ -279,35 +275,35 @@ legend("topright", legend = levels(dune.env$Management), bty = "n",
 ## Modifying the shape of points {.smaller}
 
 ```r
-shapes.vec <- c(21, 22, 24)
-plot(dune.bray.ord, display = "sites", type = "n")
-points(dune.bray.ord, display = "sites", cex=2, bg = "black", 
-       pch = shapes.vec[dune.env$Use])
-legend("topright", legend = levels(dune.env$Use), bty = "n",
+shapes.vec <- c(21, 22)
+plot(MLM.bray.ord, display = "sites", type = "n")
+points(MLM.bray.ord, display = "sites", cex=2, bg = "black", 
+       pch = shapes.vec[MLM.env$flow_type])
+legend("topright", legend = levels(MLM.env$flow_type), bty = "n",
                       col = "black", pch = shapes.vec, pt.bg = "black")
 ```
 
-![](ordination_files/figure-html/NMDS-9-1.png) 
+![](ordination_files/figure-html/NMDS-9-1.png)
 
 
 
 ## Modifying the shape and color of points {.smaller}
 
 ```r
-colors.vec <- c("red", "blue", "orange", "grey")
-shapes.vec <- c(21, 22, 24)
-plot(dune.bray.ord, display = "sites", type = "n")
-points(dune.bray.ord, display = "sites", cex=2, 
-       pch = shapes.vec[dune.env$Use], 
-       col = colors.vec[dune.env$Management], 
-       bg = colors.vec[dune.env$Management])
-legend("topright", legend = levels(dune.env$Management), bty = "n",
+colors.vec <- c("red", "blue")
+shapes.vec <- c(21, 22)
+plot(MLM.bray.ord, display = "sites", type = "n")
+points(MLM.bray.ord, display = "sites", cex=2, 
+       pch = shapes.vec[MLM.env$flow_type], 
+       col = colors.vec[MLM.env$side_of_island], 
+       bg = colors.vec[MLM.env$side_of_island])
+legend("topright", legend = levels(MLM.env$side_of_island), bty = "n",
                       col = colors.vec, pch = 21, pt.bg = colors.vec)
-legend(1.4,1.05, legend = levels(dune.env$Use), bty = "n",
+legend(1.4,1.05, legend = levels(MLM.env$flow_type), bty = "n",
                       col = "black", pch = shapes.vec, pt.bg = "black")
 ```
 
-![](ordination_files/figure-html/NMDS-10-1.png) 
+![](ordination_files/figure-html/NMDS-10-1.png)
 
 
 
@@ -316,10 +312,10 @@ legend(1.4,1.05, legend = levels(dune.env$Use), bty = "n",
 
 ```r
 # Just points
-plot(dune.bray.ord, display = "sites", cex=2)
+plot(MLM.bray.ord, display = "sites", cex=2)
 ```
 
-![](ordination_files/figure-html/NMDS-11-1.png) 
+![](ordination_files/figure-html/NMDS-11-1.png)
 
 
 
@@ -327,11 +323,11 @@ plot(dune.bray.ord, display = "sites", cex=2)
 
 
 ```r
-plot(dune.bray.ord, display = "sites", cex=2)
-ordihull(dune.bray.ord,groups = dune.env$Management, label = TRUE)
+plot(MLM.bray.ord, display = "sites", cex=2)
+ordihull(MLM.bray.ord, groups = MLM.env$site_ID, label = FALSE)
 ```
 
-![](ordination_files/figure-html/NMDS-12-1.png) 
+![](ordination_files/figure-html/NMDS-12-1.png)
 
 
 
@@ -339,11 +335,11 @@ ordihull(dune.bray.ord,groups = dune.env$Management, label = TRUE)
 
 
 ```r
-plot(dune.bray.ord, display = "sites", cex=2)
-ordihull(dune.bray.ord,groups = dune.env$Management, label = TRUE, col = "blue")
+plot(MLM.bray.ord, display = "sites", cex=2)
+ordihull(MLM.bray.ord, groups = MLM.env$site_ID, label = FALSE, col = "blue")
 ```
 
-![](ordination_files/figure-html/NMDS-13-1.png) 
+![](ordination_files/figure-html/NMDS-13-1.png)
 
 
 
@@ -351,12 +347,12 @@ ordihull(dune.bray.ord,groups = dune.env$Management, label = TRUE, col = "blue")
 
 
 ```r
-plot(dune.bray.ord, display = "sites", cex=2)
-ordihull(dune.bray.ord,groups = dune.env$Management, label = TRUE, col = "blue")
-ordispider(dune.bray.ord,groups = dune.env$Management, label = TRUE)
+plot(MLM.bray.ord, display = "sites", cex=2)
+ordihull(MLM.bray.ord,groups = MLM.env$site_ID, label = FALSE, col = "blue")
+ordispider(MLM.bray.ord,groups = MLM.env$site_ID, label = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS-14-1.png) 
+![](ordination_files/figure-html/NMDS-14-1.png)
 
 
 
@@ -365,10 +361,10 @@ ordispider(dune.bray.ord,groups = dune.env$Management, label = TRUE)
 
 ```r
 # Plot first, then add layers
-plot(dune.bray.ord, display = "sites", cex=2)
+plot(MLM.bray.ord, display = "sites", cex=2)
 ```
 
-![](ordination_files/figure-html/NMDS-15-1.png) 
+![](ordination_files/figure-html/NMDS-15-1.png)
 
 
 
@@ -376,11 +372,11 @@ plot(dune.bray.ord, display = "sites", cex=2)
 
 
 ```r
-plot(dune.bray.ord, display = "sites", cex=2)
-ordispider(dune.bray.ord,groups = dune.env$Management, label = TRUE)
+plot(MLM.bray.ord, display = "sites", cex=2)
+ordispider(MLM.bray.ord,groups = MLM.env$site_ID, label = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS-16-1.png) 
+![](ordination_files/figure-html/NMDS-16-1.png)
 
 
 
@@ -388,10 +384,10 @@ ordispider(dune.bray.ord,groups = dune.env$Management, label = TRUE)
 
 
 ```r
-plot(dune.bray.ord, type = "n")
+plot(MLM.bray.ord, type = "n")
 ```
 
-![](ordination_files/figure-html/NMDS-17-1.png) 
+![](ordination_files/figure-html/NMDS-17-1.png)
 
 
 
@@ -399,11 +395,11 @@ plot(dune.bray.ord, type = "n")
 
 
 ```r
-plot(dune.bray.ord, type = "n")
-points(dune.bray.ord,display = "sites", cex = 2)
+plot(MLM.bray.ord, type = "n")
+points(MLM.bray.ord,display = "sites", cex = 2)
 ```
 
-![](ordination_files/figure-html/NMDS-18-1.png) 
+![](ordination_files/figure-html/NMDS-18-1.png)
 
 
 
@@ -411,10 +407,10 @@ points(dune.bray.ord,display = "sites", cex = 2)
 
 
 ```r
-plot(dune.bray.ord, display = "sites", type = "n")
+plot(MLM.bray.ord, display = "sites", type = "n")
 ```
 
-![](ordination_files/figure-html/NMDS-19-1.png) 
+![](ordination_files/figure-html/NMDS-19-1.png)
 
 
 
@@ -422,11 +418,11 @@ plot(dune.bray.ord, display = "sites", type = "n")
 
 
 ```r
-plot(dune.bray.ord, display = "sites", type = "n")
-points(dune.bray.ord, display = "sites", cex = 2)
+plot(MLM.bray.ord, display = "sites", type = "n")
+points(MLM.bray.ord, display = "sites", cex = 2)
 ```
 
-![](ordination_files/figure-html/NMDS-20-1.png) 
+![](ordination_files/figure-html/NMDS-20-1.png)
 
 
 
@@ -434,12 +430,12 @@ points(dune.bray.ord, display = "sites", cex = 2)
 
 
 ```r
-plot(dune.bray.ord, display = "sites", type = "n")
-points(dune.bray.ord,display = "sites", cex = 2)
-ordispider(dune.bray.ord,groups = dune.env$Management, label = TRUE)
+plot(MLM.bray.ord, display = "sites", type = "n")
+points(MLM.bray.ord,display = "sites", cex = 2)
+ordispider(MLM.bray.ord,groups = MLM.env$site_ID, label = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS-21-1.png) 
+![](ordination_files/figure-html/NMDS-21-1.png)
 
 
 
@@ -447,24 +443,24 @@ ordispider(dune.bray.ord,groups = dune.env$Management, label = TRUE)
 
 
 ```r
-plot(dune.bray.ord, display = "sites", type = "n")
-points(dune.bray.ord, display = "sites", cex = 2)
-ordiellipse(dune.bray.ord,groups = dune.env$Management, label = TRUE)
+plot(MLM.bray.ord, display = "sites", type = "n")
+points(MLM.bray.ord, display = "sites", cex = 2)
+ordiellipse(MLM.bray.ord,groups = MLM.env$site_ID, label = FALSE)
 ```
 
-![](ordination_files/figure-html/NMDS-22-1.png) 
+![](ordination_files/figure-html/NMDS-22-1.png)
 
 
 
 ## Adding other layers
 
 ```r
-plot(dune.bray.ord, display = "sites", type = "n")
-points(dune.bray.ord,display = "sites", cex = 2)
-ordisurf(dune.bray.ord,dune.env$A1, add = TRUE)
+plot(MLM.bray.ord, display = "sites", type = "n")
+points(MLM.bray.ord,display = "sites", cex = 2)
+ordisurf(MLM.bray.ord,MLM.env$elevation_m, add = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS-23-1.png) 
+![](ordination_files/figure-html/NMDS-23-1.png)
 
 
 
@@ -472,16 +468,16 @@ ordisurf(dune.bray.ord,dune.env$A1, add = TRUE)
 
 
 ```r
-dune.bray.ord.A1.fit <- envfit(dune.bray.ord ~ dune.env$A1, permutations = 1000)
-dune.bray.ord.A1.fit
+MLM.bray.ord.elev.fit <- envfit(MLM.bray.ord ~ elevation_m, data = MLM.env, permutations = 1000)
+MLM.bray.ord.elev.fit
 ```
 
 ```
 
 ***VECTORS
 
-              NMDS1   NMDS2     r2  Pr(>r)  
-dune.env$A1 0.99008 0.14052 0.3798 0.01499 *
+              NMDS1   NMDS2     r2   Pr(>r)    
+elevation_m 0.69535 0.71867 0.8263 0.000999 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 Permutation: free
@@ -494,26 +490,12 @@ Number of permutations: 1000
 
 
 ```r
-plot(dune.bray.ord, display = "sites", type = "n")
-points(dune.bray.ord,display = "sites", cex = 2)
-plot(dune.bray.ord.A1.fit, add = TRUE)
-ordisurf(dune.bray.ord,dune.env$A1, add = TRUE)
+plot(MLM.bray.ord, display = "sites", type = "n")
+points(MLM.bray.ord,display = "sites", cex = 2)
+plot(MLM.bray.ord.elev.fit, add = TRUE)
+ordisurf(MLM.bray.ord,MLM.env$elevation_m, add = TRUE)
 ```
 
-![](ordination_files/figure-html/NMDS-25-1.png) 
+![](ordination_files/figure-html/NMDS-25-1.png)
 
 
-
-
-## Activity
-
-Using the cleaned `varespec` data from the last exercise, and based on your finding of an appropriate distance metric:
-
-1. Load the data
-2. Create an NMDS plot using `metaMDS()`
-    * use the distance metric you chose earlier
-        * if this doesn't work, `bray` is a decent fallback
-    * Plot only the sites (not the species)
-    * Make the points blue squares, size (cex = 2)
-    * Add an `ordispider`
-    * add a title with `main = "title"`

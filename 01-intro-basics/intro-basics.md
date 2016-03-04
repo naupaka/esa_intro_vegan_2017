@@ -1,200 +1,47 @@
 # Community data analysis using the vegan package in R
-Naupaka Zimmerman and Gavin Simpson  
-August 8, 2015 • ESA 2015  
+Naupaka Zimmerman   
+March 4, 2016  
 
 
 
 
-
-## Workshop logistics
-
-* Etherpad 
-    * https://etherpad.mozilla.org/ESA2015-intro-vegan
-
-
-
-## Workshop logistics
-
-* Etherpad 
-    * https://etherpad.mozilla.org/ESA2015-intro-vegan
-* Red and Green Stickies 
-  
-![](img/Green_post_it.png)&nbsp;&nbsp;&nbsp;&nbsp;![](img/Red_post_it.png)
-
-
-
-## Packages installed?
+## Packages installed and loaded?
 
 
 ```r
 install.packages("vegan", dependencies = TRUE)
-install.packages("plyr")
-install.packages("reshape2")
-```
-
-### Data downloaded from github?  
-https://github.com/naupaka/esa_intro_vegan_2015
-
-
-
-## Introduction to **vegan** | a potted history
-
- * Jari Oksanen released first version of vegan to CRAN on September 5th 2001
- * Limited scope; purpose was to have Peter Minchin's DECODA-like functions for NMDS available in R plus helper functions
- * By version 1.4, vegan had DCA & CCA, with RDA following in 1.4.2. `ordisurf()` appeared in 1.4 also as did permutation tests.
- * From version 1.6, vegan expanded into areas of theoretical ecology and diversity
- * Version 1.6.5 brought the `metaMDS()` wrappers for NMDS
- * Since then vegan has rapidly developed on the R-Forge website and expanded considerably
- * Current development team: Jari Oksanen, F. Guillaume Blanchet, Roeland Kindt, Pierre Legendre, Peter R. Minchin, R. B. O'Hara, Gavin L. Simpson, Peter Solymos, M. Henry H. Stevens, Helene Wagner
-
-## Introduction to **vegan** | vegan today
-
- * The current stable release is version 2.3.0 which is available from CRAN
- * [http://cran.r-project.org/web/packages/vegan]()
- * Development is mainly conducted via [github](https://github.com/vegandevs/vegan) with a separate development version
- * Development branch is 2.4.x with no plans to release to CRAN soon
- * Github also hosts our bug tracking, but we use R-Forge for mailing lists \& forums which should be first port of call for getting help
- * [http://r-forge.r-project.org/projects/vegan]()
- * Also several vignettes (manuals/guides) containing R code to explain how vegan works
- * The vegan tutorial is available at [http://vegan.r-forge.r-project.org]()
-
-
-
-# Cleaning and importing data
-
-
-
-## Digging in | Prepping your data for R and vegan
-
-### “The purpose of computing is insight, not numbers” 
-### - Richard Hamming 
-
-
-
-## Digging in | Prepping your data for R and vegan
-
-### “The purpose of computing is insight, not numbers” 
-### - Richard Hamming 
-<br /><br /><br />
-But you have to get through the numbers to get to the insight...
-
-
-
-## Digging in | Prepping your data for R and vegan
-
-We've all heard data horror stories
-![](img/otherpeoplesdata.png)
-
-
-
-## Cleaning your data for R and vegan
-
-### Loading dirty data and then cleaning
-
-```r
-setwd("your/working/directory/")
-BCI.small.csv.in <- read.csv("data/BCI_small.csv", header = TRUE, row.names = 1)
-```
-RStudio example
-
-
-
-## Cleaning your data for R and vegan
-
-### Loading dirty data and then cleaning
-
-```r
-BCI.small.csv.in <- read.csv("data/BCI_small_fixed.csv", header = TRUE, row.names = 1)
-```
-
-
-
-## Cleaning your data for R and vegan
-
-Then...  
-
-```r
-head(BCI.small.csv.in, n=3)
-```
-
-```
-  Abarema.macradenium Acacia.melanoceras Acalypha.diversifolia
-1                   0                  1                     0
-2                   1                  0                     0
-3                   0                  0                     0
-  Acalypha.macrostachya Adelia.triloba
-1                     0              0
-2                     0              0
-3                     1              0
-```
-
-
-
-## Cleaning your data for R and vegan
-
-Then...  
-
-```r
-summary(BCI.small.csv.in)
-```
-
-```
- Abarema.macradenium Acacia.melanoceras Acalypha.diversifolia
- Min.   :0.0         Min.   :0.00       Min.   :0.0          
- 1st Qu.:0.0         1st Qu.:0.00       1st Qu.:0.0          
- Median :0.0         Median :0.00       Median :0.0          
- Mean   :0.3         Mean   :0.25       Mean   :0.3          
- 3rd Qu.:0.0         3rd Qu.:0.25       3rd Qu.:0.0          
- Max.   :2.0         Max.   :1.00       Max.   :3.0          
- Acalypha.macrostachya Adelia.triloba
- Min.   :0.00          Min.   :0.0   
- 1st Qu.:0.00          1st Qu.:0.0   
- Median :0.00          Median :0.0   
- Mean   :0.05          Mean   :0.8   
- 3rd Qu.:0.00          3rd Qu.:1.0   
- Max.   :1.00          Max.   :5.0   
-```
-
-
-
-## Cleaning your data for R and vegan
-
-We will now switch to using one of vegan's built-in datasets for species (`BCI`) and environmental variables from the same paper, which we will load directly
-    
-* from Condit et al. 2002 *Science*
-
-
-```r
 library("vegan")
-data(BCI)
-BCI.env <- read.csv("data/BCI.env.csv", header = TRUE, row.names = 1)
 ```
 
 
-
-## Cleaning your data for R and vegan
-
-We will now switch to using one of vegan's built-in datasets for species (`BCI`) and environmental variables from the same paper, which we will load directly
-    
-* from Condit et al. 2002 *Science*
+## Loading your OTU table into R
 
 
 ```r
-library("vegan")
-data(BCI)
-BCI.env <- read.csv("data/BCI.env.csv", header = TRUE, row.names = 1)
+MLM.otus <- read.csv("data/MLM_data_otus.csv", row.names = 1, header = TRUE)
+MLM.env <- read.csv("data/MLM_data_env.csv", header = TRUE)
+```
+
+
+
+## Loading your OTU table into R
+
+
+```r
+MLM.otus <- read.csv("data/MLM_data_otus.csv", row.names = 1, header = TRUE)
+MLM.env <- read.csv("data/MLM_data_env.csv", header = TRUE)
 ```
 
 
 ```r
-head(BCI[,1:3], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Abarema.macradenia Acacia.melanoceras Acalypha.diversifolia
-1                  0                  0                     0
-2                  0                  0                     0
-3                  0                  0                     0
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 
@@ -208,13 +55,13 @@ head(BCI[,1:3], n = 3)
 **Sum of rows**
 
 ```r
-sum.of.rows <- apply(BCI, 1, sum)
+sum.of.rows <- apply(MLM.otus, 1, sum)
 sort(sum.of.rows, decreasing = TRUE)[1:8] #top 8 rows (plots) 
 ```
 
 ```
- 35   4   5  40  10  30   3  15 
-601 508 505 489 483 475 463 462 
+  w700y1   w700o9  w100y10  w1800y2   d700o9 d1700y10   w700o5   w100o1 
+    7897     7805     7665     7536     7499     7109     7107     7092 
 ```
 
 
@@ -224,24 +71,24 @@ sort(sum.of.rows, decreasing = TRUE)[1:8] #top 8 rows (plots)
 **Sum of rows**
 
 ```r
-sum.of.rows <- apply(BCI, 1, sum)
+sum.of.rows <- apply(MLM.otus, 1, sum)
 sort(sum.of.rows, decreasing = TRUE)[1:8] #top 8 rows (plots) 
 ```
 
 ```
- 35   4   5  40  10  30   3  15 
-601 508 505 489 483 475 463 462 
+  w700y1   w700o9  w100y10  w1800y2   d700o9 d1700y10   w700o5   w100o1 
+    7897     7805     7665     7536     7499     7109     7107     7092 
 ```
 **Sum of columns**
 
 ```r
-sum.of.columns <- apply(BCI, 2, sum)
+sum.of.columns <- apply(MLM.otus, 2, sum)
 sort(sum.of.columns, decreasing = TRUE)[1:3] #top 3 columns (species)
 ```
 
 ```
- Faramea.occidentalis Trichilia.tuberculata      Alseis.blackiana 
-                 1717                  1681                   983 
+OTU_0001 OTU_0002 OTU_0003 
+  174612   127234    39710 
 ```
 
 
@@ -251,23 +98,17 @@ sort(sum.of.columns, decreasing = TRUE)[1:3] #top 3 columns (species)
 **Number of plots in which each spp. occurs**
 
 ```r
-spec.pres <- apply(BCI > 0, 2, sum) 
+spec.pres <- apply(MLM.otus > 0, 2, sum) 
 sort(spec.pres, decreasing = TRUE)[1:18]
 ```
 
 ```
-       Alseis.blackiana    Faramea.occidentalis       Hirtella.triandra 
-                     50                      50                      50 
-      Oenocarpus.mapora     Protium.tenuifolium Tetragastris.panamensis 
-                     50                      50                      50 
-  Trichilia.tuberculata           Apeiba.glabra        Gustavia.superba 
-                     50                      49                      49 
-    Pouteria.reticulata  Quararibea.asterolepis           Randia.armata 
-                     49                      49                      49 
-    Brosimum.alicastrum       Cordia.lasiocalyx     Eugenia.oerstediana 
-                     48                      48                      48 
-        Guarea.guidonia    Hasseltia.floribunda      Heisteria.concinna 
-                     48                      48                      48 
+OTU_0003 OTU_0002 OTU_0001 OTU_0030 OTU_0011 OTU_0049 OTU_0004 OTU_0029 
+     119      108      106      105      102       94       87       83 
+OTU_0038 OTU_0046 OTU_0008 OTU_0005 OTU_0083 OTU_0180 OTU_0034 OTU_0062 
+      79       77       76       72       68       65       63       63 
+OTU_0106 OTU_0092 
+      62       60 
 ```
 
 
@@ -281,14 +122,14 @@ sort(spec.pres, decreasing = TRUE)[1:18]
 **Square root transformation**
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 
@@ -298,26 +139,26 @@ head(BCI[,162:164], n = 3)
 **Square root transformation**
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 ```r
-spec.sqrt <- sqrt(BCI)
-head(spec.sqrt[,162:164], n = 3)
+spec.sqrt <- sqrt(MLM.otus)
+head(spec.sqrt[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1          3.605551             2.236068          1.414214
-2          3.464102             2.000000          0.000000
-3          3.464102             1.000000          1.414214
+        OTU_0001 OTU_0002  OTU_0003
+w100y1 58.566202 1.000000  8.660254
+w100y2 21.794495 4.123106 24.677925
+w100y3  4.898979 3.464102 15.588457
 ```
 
 
@@ -327,14 +168,14 @@ head(spec.sqrt[,162:164], n = 3)
 **Total**
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 
@@ -344,26 +185,26 @@ head(BCI[,162:164], n = 3)
 **Total**
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 ```r
-spec.total <- decostand(BCI, method = "total", MARGIN = 1) # by rows (sites)
-head(spec.total[,162:164], n = 3)
+spec.total <- decostand(MLM.otus, method = "total", MARGIN = 1) # by rows (sites)
+head(spec.total[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1        0.02901786          0.011160714       0.004464286
-2        0.02758621          0.009195402       0.000000000
-3        0.02591793          0.002159827       0.004319654
+          OTU_0001     OTU_0002   OTU_0003
+w100y1 0.781677302 0.0002278943 0.01709207
+w100y2 0.089758125 0.0032123961 0.11507937
+w100y3 0.004244032 0.0021220159 0.04297082
 ```
 
 
@@ -373,14 +214,14 @@ head(spec.total[,162:164], n = 3)
 **Maximum**
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 
@@ -390,26 +231,26 @@ head(BCI[,162:164], n = 3)
 **Maximum** 
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 ```r
-spec.max <- decostand(BCI, method = "max", MARGIN = 2) # by columns (species)
-head(spec.max[,162:164], n = 3)
+spec.max <- decostand(MLM.otus, method = "max", MARGIN = 2) # by columns (species)
+head(spec.max[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1         0.5000000            0.7142857               0.5
-2         0.4615385            0.5714286               0.0
-3         0.4615385            0.1428571               0.5
+          OTU_0001     OTU_0002   OTU_0003
+w100y1 0.471153846 0.0001653439 0.01960272
+w100y2 0.065247253 0.0028108466 0.15917407
+w100y3 0.003296703 0.0019841270 0.06351281
 ```
 
 
@@ -419,14 +260,14 @@ head(spec.max[,162:164], n = 3)
 **Presence-Absence**
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 
@@ -436,122 +277,122 @@ head(BCI[,162:164], n = 3)
 **Presence-Absence**
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 ```r
-spec.pa <- decostand(BCI, method = "pa")
-head(spec.pa[,162:164], n = 3)
+spec.pa <- decostand(MLM.otus, method = "pa")
+head(spec.pa[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                 1                    1                 1
-2                 1                    1                 0
-3                 1                    1                 1
+       OTU_0001 OTU_0002 OTU_0003
+w100y1        1        1        1
+w100y2        1        1        1
+w100y3        1        1        1
 ```
 
 
 
 ## Data transformation in vegan with `decostand()`
 
-**Hellinger (Legendre & Gallagher 2001)**
+**Hellinger (Legendre & Gallagher 2001)**    
 Square root of method "total"
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 
 
 ## Data transformation in vegan with `decostand()`
 
-**Hellinger (Legendre & Gallagher 2001)**
+**Hellinger (Legendre & Gallagher 2001)**     
 Square root of method "total"
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 ```r
-spec.hellinger <- decostand(BCI, method = "hellinger", MARGIN = 1) # on rows (sites)
-head(spec.hellinger[,162:164], n = 3)
+spec.hellinger <- decostand(MLM.otus, method = "hellinger", MARGIN = 1) # on rows (sites)
+head(spec.hellinger[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1         0.1703463           0.10564428        0.06681531
-2         0.1660910           0.09589266        0.00000000
-3         0.1609905           0.04647394        0.06572408
+         OTU_0001   OTU_0002  OTU_0003
+w100y1 0.88412516 0.01509617 0.1307366
+w100y2 0.29959660 0.05667800 0.3392335
+w100y3 0.06514623 0.04606534 0.2072940
 ```
 
 
 
 ## Data transformation in vegan with `decostand()`
 
-**Wisconsin double standardization**  
+**Wisconsin double standardization**      
 Shortcut function for standardizing species to maximum, then sites by totals.  
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 
 
 ## Data transformation in vegan with `decostand()`
 
-**Wisconsin double standardization**  
+**Wisconsin double standardization**    
 Shortcut function for standardizing species to maximum, then sites by totals.
 
 ```r
-head(BCI[,162:164], n = 3)
+head(MLM.otus[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1                13                    5                 2
-2                12                    4                 0
-3                12                    1                 2
+       OTU_0001 OTU_0002 OTU_0003
+w100y1     3430        1       75
+w100y2      475       17      609
+w100y3       24       12      243
 ```
 
 ```r
-spec.wisc <- wisconsin(BCI)
-head(spec.wisc[,162:164], n = 3)
+spec.wisc <- wisconsin(MLM.otus)
+head(spec.wisc[,1:3], n = 3)
 ```
 
 ```
-  Prioria.copaifera Protium.costaricense Protium.panamense
-1        0.01315834          0.018797633        0.01315834
-2        0.01532406          0.018972642        0.00000000
-3        0.01410727          0.004366536        0.01528288
+           OTU_0001     OTU_0002     OTU_0003
+w100y1 0.0095409778 3.348254e-06 0.0003969597
+w100y2 0.0005553552 2.392466e-05 0.0013548180
+w100y3 0.0000395903 2.382749e-05 0.0007627289
 ```
 
 
@@ -574,19 +415,19 @@ head(spec.wisc[,162:164], n = 3)
 
 
 ```r
-spec.jaccpa <- vegdist(BCI, method = "jaccard", binary = TRUE)
+spec.jaccpa <- vegdist(MLM.otus, method = "jaccard", binary = TRUE)
 # returns an object of class 'dist'
 str(spec.jaccpa) 
 ```
 
 ```
-Class 'dist'  atomic [1:1225] 0.434 0.462 0.442 0.46 0.425 ...
-  ..- attr(*, "Size")= int 50
-  ..- attr(*, "Labels")= chr [1:50] "1" "2" "3" "4" ...
+Class 'dist'  atomic [1:8385] 0.805 0.769 0.78 0.76 0.793 ...
+  ..- attr(*, "Size")= int 130
+  ..- attr(*, "Labels")= chr [1:130] "w100y1" "w100y2" "w100y3" "w100y4" ...
   ..- attr(*, "Diag")= logi FALSE
   ..- attr(*, "Upper")= logi FALSE
   ..- attr(*, "method")= chr "binary jaccard"
-  ..- attr(*, "call")= language vegdist(x = BCI, method = "jaccard", binary = TRUE)
+  ..- attr(*, "call")= language vegdist(x = MLM.otus, method = "jaccard", binary = TRUE)
 ```
 
 
@@ -626,14 +467,14 @@ as.matrix(spec.jaccpa)[1:4,1:4]
 Higher rank correlations indicate better separation along gradients
 
 ```r
-rank.UTM.NS <- rankindex(BCI.env$UTM.NS, BCI, indices = 
+rank.elev <- rankindex(MLM.env$elevation_m, MLM.otus, indices = 
               c("bray", "euclid", "manhattan", "horn"), method = "spearman")
-rank.UTM.NS
+rank.elev
 ```
 
 ```
      bray    euclid manhattan      horn 
-0.1344155 0.1520871 0.1727256 0.1687463 
+0.4835205 0.3780230 0.3852126 0.5090748 
 ```
 
 
@@ -644,14 +485,14 @@ rank.UTM.NS
 Can also use on standardized data
 
 ```r
-rank.UTM.NS.wisc <- rankindex(BCI.env$UTM.NS, wisconsin(BCI), indices = 
+rank.elev.wisc <- rankindex(MLM.env$elevation_m, wisconsin(MLM.otus), indices = 
               c("bray", "euclid", "manhattan", "horn"), method = "spearman")
-rank.UTM.NS.wisc
+rank.elev.wisc
 ```
 
 ```
-      bray     euclid  manhattan       horn 
-0.12053153 0.07630866 0.12053153 0.12799120 
+       bray      euclid   manhattan        horn 
+ 0.45556000 -0.03630866  0.45555990  0.46304968 
 ```
 
 
@@ -660,37 +501,22 @@ rank.UTM.NS.wisc
 
 
 ```r
-sort(rank.UTM.NS, decreasing = TRUE)
+sort(rank.elev, decreasing = TRUE)
 ```
 
 ```
-manhattan      horn    euclid      bray 
-0.1727256 0.1687463 0.1520871 0.1344155 
+     horn      bray manhattan    euclid 
+0.5090748 0.4835205 0.3852126 0.3780230 
 ```
 
 ```r
-sort(rank.UTM.NS.wisc, decreasing = TRUE)
+sort(rank.elev.wisc, decreasing = TRUE)
 ```
 
 ```
-      horn       bray  manhattan     euclid 
-0.12799120 0.12053153 0.12053153 0.07630866 
+       horn        bray   manhattan      euclid 
+ 0.46304968  0.45556000  0.45555990 -0.03630866 
 ```
-
-
-
-## Activity
-
-There is a data file in the workshop repositiory, in the `01-intro-basics/data/` folder called `varespec.xlsx`.  
-
-1. Download this file (which has errors)
-2. Make a copy
-3. Clean it up
-4. Load it into R
-5. Try at least two different methods to standardize the data.
-6. Evaluate at least five different community distance metrics with `rankindex()`
-7. Calculate community distances using that metric.
-
 
 
 # Diversity metrics
@@ -702,13 +528,13 @@ There is a data file in the workshop repositiory, in the `01-intro-basics/data/`
 Basic counts of richness for each plot or site
 
 ```r
-site.richness <- apply(BCI > 0, 1, sum)
-site.richness[1:18]
+site.richness <- apply(MLM.otus > 0, 1, sum)
+site.richness[1:7]
 ```
 
 ```
-  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18 
- 93  84  90  94 101  85  82  88  90  94  87  84  93  98  93  93  93  89 
+w100y1 w100y2 w100y3 w100y4 w100y5 w100y6 w100y7 
+   140    203    180    126    196    228    154 
 ```
 
 
@@ -718,15 +544,13 @@ site.richness[1:18]
 Fisher's alpha
 
 ```r
-site.fisher <- fisher.alpha(BCI)
-site.fisher[1:12]
+site.fisher <- fisher.alpha(MLM.otus)
+site.fisher[1:7]
 ```
 
 ```
-       1        2        3        4        5        6        7        8 
-35.67297 30.99091 33.32033 33.92209 37.96423 32.49374 30.58383 33.44981 
-       9       10       11       12 
-35.67236 34.82320 34.20590 34.12041 
+  w100y1   w100y2   w100y3   w100y4   w100y5   w100y6   w100y7 
+27.58229 41.88171 35.44263 22.43722 38.22437 47.38469 30.18662 
 ```
 
 
@@ -736,15 +560,13 @@ site.fisher[1:12]
 Shannon diversity
 
 ```r
-site.shannon <- diversity(BCI, index = "shannon", MARGIN = 1)
-site.shannon[1:12]
+site.shannon <- diversity(MLM.otus, index = "shannon", MARGIN = 1)
+site.shannon[1:7]
 ```
 
 ```
-       1        2        3        4        5        6        7        8 
-4.018412 3.848471 3.814060 3.976563 3.969940 3.776575 3.836811 3.908381 
-       9       10       11       12 
-3.761331 3.889803 3.859814 3.698414 
+   w100y1    w100y2    w100y3    w100y4    w100y5    w100y6    w100y7 
+1.3131475 3.6102503 2.8062958 0.8844189 2.1920820 2.9354744 2.5789890 
 ```
 
 
@@ -755,13 +577,13 @@ This is the same as `apply(BCI > 0, MARGIN = 1, sum)`
 it gives the species count for each plot
 
 ```r
-BCI.S <- specnumber(BCI)
+MLM.S <- specnumber(MLM.otus)
 ```
 This finds the plot with the least number of individuals
 
 ```r
 # could also use rowsums() instead of apply()
-BCI.raremax <- min(apply(BCI, 1, sum))
+MLM.raremax <- min(apply(MLM.otus, 1, sum))
 ```
 
 
@@ -772,12 +594,12 @@ Rarefy BCI species matrix to the minimum number of individuals in any plot
 and plot the relationship between observed and rarefied counts (plus add 1-1 line)
 
 ```r
-BCI.Srare <- rarefy(BCI, BCI.raremax)
-plot(BCI.S, BCI.Srare, xlab = "Observed No. of Species", ylab = "Rarefied No. of Species")
+MLM.Srare <- rarefy(MLM.otus, MLM.raremax)
+plot(MLM.S, MLM.Srare, xlab = "Observed No. of Species", ylab = "Rarefied No. of Species")
 abline(0, 1)
 ```
 
-![](intro-basics_files/figure-html/rarefac-3-1.png) 
+![](intro-basics_files/figure-html/rarefac-3-1.png)
 
 
 
@@ -786,10 +608,10 @@ abline(0, 1)
 Put it all together
 
 ```r
-rarecurve(BCI, step = 20, sample = BCI.raremax, col = "blue", cex = 0.6)
+rarecurve(MLM.otus, step = 20, sample = MLM.raremax, col = "blue", cex = 0.6)
 ```
 
-![](intro-basics_files/figure-html/rarefac-4-1.png) 
+![](intro-basics_files/figure-html/rarefac-4-1.png)
 
 
 
@@ -798,26 +620,28 @@ rarecurve(BCI, step = 20, sample = BCI.raremax, col = "blue", cex = 0.6)
 Multivariate homogeneity of groups dispersions
 
 ```r
-BCI.bray <- vegdist(BCI, method = "bray")
-(BCI.bray.bdisp <- betadisper(BCI.bray,group = as.factor(BCI.env$UTM.NS)))
+MLM.bray <- vegdist(MLM.otus, method = "bray")
+(MLM.bray.bdisp <- betadisper(MLM.bray,group = as.factor(MLM.env$site_ID)))
 ```
 
 ```
 
 	Homogeneity of multivariate dispersions
 
-Call: betadisper(d = BCI.bray, group = as.factor(BCI.env$UTM.NS))
+Call: betadisper(d = MLM.bray, group = as.factor(MLM.env$site_ID))
 
-No. of Positive Eigenvalues: 43
-No. of Negative Eigenvalues: 6
+No. of Positive Eigenvalues: 90
+No. of Negative Eigenvalues: 39
 
 Average distance to median:
-1011568.985 1011668.985 1011768.985 1011868.985 1011968.985 
-     0.2817      0.2663      0.3140      0.2945      0.3339 
+d1700y  d700o  d700y  w100o  w100y w1100o w1100y w1800o w1800y w2400o 
+0.4943 0.4630 0.3584 0.4405 0.4516 0.3840 0.4287 0.3647 0.3440 0.2618 
+w2400y  w700o  w700y 
+0.2770 0.2800 0.2867 
 
 Eigenvalues for PCoA axes:
- PCoA1  PCoA2  PCoA3  PCoA4  PCoA5  PCoA6  PCoA7  PCoA8 
-1.0163 0.7067 0.5318 0.3316 0.2606 0.2507 0.2257 0.1703 
+  PCoA1   PCoA2   PCoA3   PCoA4   PCoA5   PCoA6   PCoA7   PCoA8 
+15.1299  8.0298  4.2202  2.3315  1.8155  1.5186  1.3340  1.2122 
 ```
 
 
@@ -827,7 +651,7 @@ Eigenvalues for PCoA axes:
 Multivariate homogeneity of groups dispersions
 
 ```r
-permutest(BCI.bray.bdisp)
+permutest(MLM.bray.bdisp)
 ```
 
 ```
@@ -837,9 +661,11 @@ Permutation: free
 Number of permutations: 999
 
 Response: Distances
-          Df   Sum Sq   Mean Sq      F N.Perm Pr(>F)
-Groups     4 0.028314 0.0070785 1.8041    999  0.165
-Residuals 45 0.176555 0.0039235                     
+           Df  Sum Sq  Mean Sq      F N.Perm Pr(>F)  
+Groups     12 0.75564 0.062970 2.4179    999  0.014 *
+Residuals 117 3.04702 0.026043                       
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 
@@ -850,10 +676,10 @@ Residuals 45 0.176555 0.0039235
 Plot of within-group multivariate dispersion
 
 ```r
-plot(BCI.bray.bdisp)
+plot(MLM.bray.bdisp)
 ```
 
-![](intro-basics_files/figure-html/beta-3-1.png) 
+![](intro-basics_files/figure-html/beta-3-1.png)
 
 
 
@@ -862,10 +688,10 @@ plot(BCI.bray.bdisp)
 Boxplot of within-group multivariate dispersion
 
 ```r
-boxplot(BCI.bray.bdisp)
+boxplot(MLM.bray.bdisp)
 ```
 
-![](intro-basics_files/figure-html/beta-4-1.png) 
+![](intro-basics_files/figure-html/beta-4-1.png)
 
 
 
@@ -874,17 +700,17 @@ boxplot(BCI.bray.bdisp)
 Analysis of similarities 
 
 ```r
-(BCI.bray.anosim <- anosim(BCI.bray, as.factor(BCI.env$UTM.NS)))
+(MLM.bray.anosim <- anosim(MLM.bray, MLM.env$site_ID))
 ```
 
 ```
 
 Call:
-anosim(dat = BCI.bray, grouping = as.factor(BCI.env$UTM.NS)) 
+anosim(dat = MLM.bray, grouping = MLM.env$site_ID) 
 Dissimilarity: bray 
 
-ANOSIM statistic R: 0.1019 
-      Significance: 0.005 
+ANOSIM statistic R: 0.7436 
+      Significance: 0.001 
 
 Permutation: free
 Number of permutations: 999
@@ -897,10 +723,10 @@ Number of permutations: 999
 Analysis of similarities 
 
 ```r
-plot(BCI.bray.anosim)
+plot(MLM.bray.anosim)
 ```
 
-![](intro-basics_files/figure-html/beta-6-1.png) 
+![](intro-basics_files/figure-html/beta-6-1.png)
 
 
 ## PERMANOVA using `adonis`
@@ -908,22 +734,24 @@ plot(BCI.bray.anosim)
 Analysis of variance using distance matrices and for fitting linear models to distance matrices
 
 ```r
-adonis(BCI ~ BCI.env$Age.cat)
+adonis(MLM.otus ~ MLM.env$elevation_m)
 ```
 
 ```
 
 Call:
-adonis(formula = BCI ~ BCI.env$Age.cat) 
+adonis(formula = MLM.otus ~ MLM.env$elevation_m) 
 
 Permutation: free
 Number of permutations: 999
 
 Terms added sequentially (first to last)
 
-                Df SumsOfSqs  MeanSqs F.Model      R2 Pr(>F)
-BCI.env$Age.cat  1    0.0786 0.078572 0.72989 0.01498  0.736
-Residuals       48    5.1671 0.107648         0.98502       
-Total           49    5.2457                  1.00000       
+                     Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)    
+MLM.env$elevation_m   1    10.517 10.5173  35.249 0.21592  0.001 ***
+Residuals           128    38.192  0.2984         0.78408           
+Total               129    48.709                 1.00000           
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
