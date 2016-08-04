@@ -40,10 +40,13 @@ orditkplot(rda(varespec))
 
 If you get errors and not a new window in which you can edit the biplot, then you probably don't have the correct setup on your system to use Tcl/Tk. Refer to the [Tcl/Tk Issues section](http://cran.r-project.org/bin/macosx/RMacOSX-FAQ.html#Tcl_002fTk-issues) of the R Mac OS X FAQ. We may not have a chance to cover the use of the function in the workshop, but it can't hurt to get it properly configured since you may want to use it at some point on your own.
 
-### Downloading code/data from this repository  
-If you're already familiar with `Git`, then simply clone this repo. If you're not familiar with Git, simply hit the **Download ZIP** button on the right side of this page. If you're not sure where to save it, just download and unzip to your Desktop.
+### Downloading code/data from this repository
 
-If you're having any trouble with these steps please drop us an [email](mailto:naupaka@gmail.com). We'll also plan to have local copies if you forget to install any of these tools.
+The slides, data, and code in this repository may change up until the start of the workshop, so please wait until as late as possible to download these files from GitHub to ensure that you have the most recent copy.
+
+If you're already familiar with `Git`, then simply clone this repo. If you're not familiar with Git, simply click the green **Clone or Download** button on the top right side of this page and select the **Download ZIP** . If you're not sure where to save it, just download and unzip to your Desktop.
+
+If you're having any trouble with these steps please drop us an [email](mailto:naupaka@gmail.com). We'll also plan to have local copies if you forget to install any of these tools or have trouble downloading the files in this repository.
 
 ---
 
