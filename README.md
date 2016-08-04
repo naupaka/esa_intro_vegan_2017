@@ -8,7 +8,10 @@ Saturday, August 6, 2016
 Location: Room **304**, Ft. Lauderdale Convention Center     
 
 ## Organizers
-[Naupaka Zimmerman](http://naupaka.net) and [Gavin Simpson](http://www.fromthebottomoftheheap.net/).
+[Naupaka Zimmerman](http://naupaka.net) and [Gavin Simpson](http://www.fromthebottomoftheheap.net).
+
+## Instructors and helpers
+[Naupaka Zimmerman](http://naupaka.net) and [Andrew Tredennick](http://atredennick.github.io).
 
 ---
 
