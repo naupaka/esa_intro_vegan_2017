@@ -44,7 +44,7 @@ If you get errors and not a new window in which you can edit the biplot, then yo
 
 The slides, data, and code in this repository may change up until the start of the workshop, so please wait until as late as possible to download these files from GitHub to ensure that you have the most recent copy.
 
-If you're already familiar with `Git`, then simply clone this repo. If you're not familiar with Git, simply click the green **Clone or Download** button on the top right side of this page and select the **Download ZIP** . If you're not sure where to save it, just download and unzip to your Desktop.
+If you're already familiar with `Git`, then simply clone this repo. If you're not familiar with Git, simply click the green **Clone or Download** button on the top right side of this page and select **Download ZIP**. If you're not sure where to save it, just download and unzip to your Desktop.
 
 If you're having any trouble with these steps please drop us an [email](mailto:naupaka@gmail.com). We'll also plan to have local copies if you forget to install any of these tools or have trouble downloading the files in this repository.
 
