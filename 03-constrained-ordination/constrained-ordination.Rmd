@@ -1,7 +1,7 @@
 ---
 title: "Constrained Ordination & Permutation Tests"
 author: "Naupaka Zimmerman and Gavin Simpson"
-date: "August 8, 2015 • ESA 2015"
+date: "August 6, 2016 • ESA 2016"
 bibliography: constrained-ordination.bib
 
 output:
@@ -219,7 +219,7 @@ VIF is a measure of how much the variance of $\hat{\beta}_j$ is inflated by pres
 Lots of rules of thumb
 
  * VIF >= 20 indicates *strong collinearity* in constraints
- * VIF >= 10 potnetially of concern & should be looked at
+ * VIF >= 10 potentially of concern & should be looked at
 
 Computed via `vif.cca()`
 
