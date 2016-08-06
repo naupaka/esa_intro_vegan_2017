@@ -21,8 +21,6 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 * Etherpad 
     * https://public.etherpad-mozilla.org/p/ESA2016-intro-vegan
 
-
-
 ## Workshop logistics
 
 * Etherpad 
@@ -30,8 +28,6 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 * Red and Green Stickies 
   
 ![](img/Green_post_it.png)&nbsp;&nbsp;&nbsp;&nbsp;![](img/Red_post_it.png)
-
-
 
 ## Packages installed (and loaded)?
 
@@ -71,8 +67,6 @@ https://github.com/naupaka/esa_intro_vegan_2016
 ### “The purpose of computing is insight, not numbers” 
 ### - Richard Hamming 
 
-
-
 ## Digging in | Prepping your data for R and vegan
 
 ### “The purpose of computing is insight, not numbers” 
@@ -80,14 +74,14 @@ https://github.com/naupaka/esa_intro_vegan_2016
 <br /><br /><br />
 But you have to get through the numbers to get to the insight...
 
-
-
 ## Digging in | Prepping your data for R and vegan
 
 We've all heard data horror stories
 ![](img/otherpeoplesdata.png)
 
 # Cleaning and importing data
+
+## Loading data and then checking
 ```{r dirty-data-1, eval=FALSE}
 setwd("your/working/directory/")
 ```
@@ -97,7 +91,6 @@ setwd("your/working/directory/")
 BCI.small.csv.in <- read.csv("data/BCI_small_broken.csv", header = TRUE)
 summary(BCI.small.csv.in)
 ```
-
 
 ## Cleaning your data for R and vegan
 
@@ -122,7 +115,6 @@ Then...
 summary(BCI.small.csv.in)
 ```
 
-
 ## Loading your species by site matrix into R
 
 We will now switch to using a microbial ecology dataset, which we will load directly (from Zimmerman and Vitousek 2012)
@@ -136,11 +128,13 @@ MLM.env <- read.csv("data/MLM_data_env.csv", header = TRUE)
 head(MLM.otus[,1:3], n = 3)
 ```
 
+## Loading your species by site matrix into R
 
+```{r head-MLM-2}
+head(MLM.env[,1:7], n = 3)
+```
 
 # Basic data summarizing
-
-
 
 ## Summarizing data with `apply()` | sums and sorting
 
@@ -149,8 +143,6 @@ head(MLM.otus[,1:3], n = 3)
 sum.of.rows <- apply(MLM.otus, 1, sum)
 sort(sum.of.rows, decreasing = TRUE)[1:8] #top 8 rows (plots) 
 ```
-
-
 
 ## Summarizing data with `apply()` | sums and sorting
 
@@ -165,8 +157,6 @@ sum.of.columns <- apply(MLM.otus, 2, sum)
 sort(sum.of.columns, decreasing = TRUE)[1:3] #top 3 columns (species)
 ```
 
-
-
 ## Summarizing data with `apply()` | sums and sorting
 
 **Number of plots in which each spp. occurs**
@@ -175,11 +165,7 @@ spec.pres <- apply(MLM.otus > 0, 2, sum)
 sort(spec.pres, decreasing = TRUE)[1:18]
 ```
 
-
-
 # Data Transformation
-
-
 
 ## Basic data transformation
 
@@ -187,8 +173,6 @@ sort(spec.pres, decreasing = TRUE)[1:18]
 ```{r MLM-sqrt}
 head(MLM.otus[,1:3], n = 3)
 ```
-
-
 
 ## Basic data transformation
 
@@ -199,16 +183,12 @@ spec.sqrt <- sqrt(MLM.otus)
 head(spec.sqrt[,1:3], n = 3)
 ```
 
-
-
 ## Data transformation in vegan with `decostand()`
 
 **Total**
 ```{r MLM-decostand-total}
 head(MLM.otus[,1:3], n = 3)
 ```
-
-
 
 ## Data transformation in vegan with `decostand()`
 
@@ -219,16 +199,12 @@ spec.total <- decostand(MLM.otus, method = "total", MARGIN = 1) # by rows (sites
 head(spec.total[,1:3], n = 3)
 ```
 
-
-
 ## Data transformation in vegan with `decostand()`
 
 **Maximum**
 ```{r decostand-max-1}
 head(MLM.otus[,1:3], n = 3)
 ```
-
-
 
 ## Data transformation in vegan with `decostand()`
 
@@ -239,16 +215,12 @@ spec.max <- decostand(MLM.otus, method = "max", MARGIN = 2) # by columns (specie
 head(spec.max[,1:3], n = 3)
 ```
 
-
-
 ## Data transformation in vegan with `decostand()`
 
 **Presence-Absence**
 ```{r decostand-pa-1}
 head(MLM.otus[,1:3], n = 3)
 ```
-
-
 
 ## Data transformation in vegan with `decostand()`
 
@@ -259,8 +231,6 @@ spec.pa <- decostand(MLM.otus, method = "pa")
 head(spec.pa[,1:3], n = 3)
 ```
 
-
-
 ## Data transformation in vegan with `decostand()`
 
 **Hellinger (Legendre & Gallagher 2001)**    
@@ -268,8 +238,6 @@ Square root of method "total"
 ```{r decostand-hellinger-1}
 head(MLM.otus[,1:3], n = 3)
 ```
-
-
 
 ## Data transformation in vegan with `decostand()`
 
@@ -281,8 +249,6 @@ spec.hellinger <- decostand(MLM.otus, method = "hellinger", MARGIN = 1) # on row
 head(spec.hellinger[,1:3], n = 3)
 ```
 
-
-
 ## Data transformation in vegan with `decostand()`
 
 **Wisconsin double standardization**      
@@ -290,8 +256,6 @@ Shortcut function for standardizing species to maximum, then sites by totals.
 ```{r wisconsin-1}
 head(MLM.otus[,1:3], n = 3)
 ```
-
-
 
 ## Data transformation in vegan with `decostand()`
 
@@ -303,18 +267,12 @@ spec.wisc <- wisconsin(MLM.otus)
 head(spec.wisc[,1:3], n = 3)
 ```
 
-
-
 # Calculating community distances
-
-
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
 ### Many different community distance metrics are available in `vegdist()`    
 *manhattan, euclidean, canberra, bray, kulczynski, jaccard, gower, altGower, morisita, horn, mountford, raup, binomial, chao, or cao*
-
-
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
@@ -327,16 +285,11 @@ spec.jaccpa <- vegdist(MLM.otus, method = "jaccard", binary = TRUE)
 str(spec.jaccpa) 
 ```
 
-
-
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
 ```{r dist-jacc-2}
 as.matrix(spec.jaccpa)[1:4,1:4]
 ```
-
-
-
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
@@ -345,8 +298,6 @@ as.matrix(spec.jaccpa)[1:4,1:4]
 ```{r vegdist-help, eval=FALSE}
 ?vegdist
 ```
-
-
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
@@ -358,8 +309,6 @@ rank.elev <- rankindex(MLM.env$elevation_m, MLM.otus, indices =
 rank.elev
 ```
 
-
-
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
 ### Second, try `rankindex()`    
@@ -370,16 +319,12 @@ rank.elev.wisc <- rankindex(MLM.env$elevation_m, wisconsin(MLM.otus), indices =
 rank.elev.wisc
 ```
 
-
-
 ## Calculating distances with `vegdist()` | comparison
 
 ```{r rankindex-3}
 sort(rank.elev, decreasing = TRUE)
 sort(rank.elev.wisc, decreasing = TRUE)
 ```
-
-
 
 ## Activity
 
@@ -398,8 +343,6 @@ There is a data file in the workshop repositiory, in the `01-intro-basics/data/`
 
 # Diversity metrics
 
-
-
 ## Alpha diversity
 
 Basic counts of richness for each plot or site
@@ -407,8 +350,6 @@ Basic counts of richness for each plot or site
 site.richness <- apply(MLM.otus > 0, 1, sum)
 site.richness[1:7]
 ```
-
-
 
 ## Alpha diversity | Other metrics
 
@@ -418,8 +359,6 @@ site.fisher <- fisher.alpha(MLM.otus)
 site.fisher[1:7]
 ```
 
-
-
 ## Alpha diversity | Other metrics
 
 Shannon diversity
@@ -427,8 +366,6 @@ Shannon diversity
 site.shannon <- diversity(MLM.otus, index = "shannon", MARGIN = 1)
 site.shannon[1:7]
 ```
-
-
 
 ## Rarefaction
 
@@ -443,19 +380,15 @@ This finds the plot with the least number of individuals
 MLM.raremax <- min(apply(MLM.otus, 1, sum))
 ```
 
-
-
 ## Rarefaction
 
-Rarefy BCI species matrix to the minimum number of individuals in any plot    
+Rarefy MLM species matrix to the minimum number of individuals in any plot    
 and plot the relationship between observed and rarefied counts (plus add 1-1 line)
 ```{r rarefac-3, fig.height=4}
 MLM.Srare <- rarefy(MLM.otus, MLM.raremax)
 plot(MLM.S, MLM.Srare, xlab = "Observed No. of Species", ylab = "Rarefied No. of Species")
 abline(0, 1)
 ```
-
-
 
 ## Rarefaction
 
@@ -464,17 +397,13 @@ Put it all together
 rarecurve(MLM.otus, step = 20, sample = MLM.raremax, col = "blue", cex = 0.6)
 ```
 
-
-
-## Beta diversity
+## Beta diversity {.smaller}
 
 Multivariate homogeneity of groups dispersions
 ```{r beta-1}
 MLM.bray <- vegdist(MLM.otus, method = "bray")
 (MLM.bray.bdisp <- betadisper(MLM.bray,group = as.factor(MLM.env$site_ID)))
 ```
-
-
 
 ## Beta diversity {.smaller}
 
@@ -483,9 +412,6 @@ Multivariate homogeneity of groups dispersions
 permutest(MLM.bray.bdisp)
 ```
 
-
-
-
 ## Beta diversity
 
 Plot of within-group multivariate dispersion
@@ -493,38 +419,92 @@ Plot of within-group multivariate dispersion
 plot(MLM.bray.bdisp)
 ```
 
-
-
 ## Beta diversity
 
 Boxplot of within-group multivariate dispersion
-```{r beta-4, fig.height=5.5}
-boxplot(MLM.bray.bdisp)
+```{r beta-4, fig.height=4.5}
+boxplot(MLM.bray.bdisp, las = 3)
 ```
 
+## Beta diversity | ANOSIM Analysis of similarities
 
-
-## Beta diversity | ANOSIM
-
-Analysis of similarities 
+BE CAREFUL, VERY SENSITIVE TO MULTIVARIATE HETEROSKEDASTICITY
 ```{r beta-5, fig.height=4.5}
 (MLM.bray.anosim <- anosim(MLM.bray, MLM.env$site_ID))
 ```
 
-
-
-## Beta diversity | ANOSIM
-
-Analysis of similarities 
+## Beta diversity | ANOSIM Analysis of similarities
+ 
 ```{r beta-6, fig.height=4.5}
 plot(MLM.bray.anosim)
 ```
 
+# Study design, testing hypotheses, and PERMANOVAs
 
 ## PERMANOVA using `adonis`
 
+The key conceptual thing is to decide what is exchangeable (hence permutable) under the null hypothesis you are trying to test.
+
+You can't always test all the things you might be interested in at once in all designs.
+
+## PERMANOVA using `adonis` | {.smaller}
+
 Analysis of variance using distance matrices and for fitting linear models to distance matrices
-```{r adonis}
+```{r adonis-1}
 adonis(MLM.otus ~ MLM.env$elevation_m)
 ```
+
+## PERMANOVA using `adonis` | {.smaller}
+
+Thinking about study design and how to permute samples. <br /><br />
+![](img/MLM_map.png)<br />
+Sites from the Mauna Loa Environmental matrix in Hawai'i.
+
+## PERMANOVA using `adonis` | Substrate Age {.smaller}
+
+Thinking about study design and how to permute samples (old way using `strata`)
+```{r adonis-2}
+adonis(MLM.otus ~ MLM.env$flow_age, strata = MLM.env$site_ID)
+```
+
+## PERMANOVA using `adonis` | Substrate Age
+
+The main thing with `permute` is to understand the levels of the hierarchy:
+
+1. **within**: how to permute samples at lowest level
+2. **plots**: how are samples grouped; permutations are restricted to be
+*within* plots; plots can also be permuted too or instead of samples
+3. **blocks**: these sit atop the hierarchy - samples within plots within
+blocks; blocks are *never* permuted
+
+You can replicate old `strata` arg in vegan's permutation code by
+setting either `plots` or `blocks` to be a factor variable.
+
+## PERMANOVA using `adonis` | Substrate Age
+
+Thinking about study design and how to permute samples (new way using `permute` package)
+```{r adonis-3}
+h1 <- how(plots = Plots(MLM.env$site_ID))
+
+# returns max number of permutations given constraints
+check(MLM.otus, control = h1)
+```
+
+## PERMANOVA using `adonis` | Substrate Age {.smaller}
+
+```{r adonis-4}
+adonis(MLM.otus ~ MLM.env$flow_age, permutations = h1)
+```
+
+## PERMANOVA using `adonis` | Substrate Age
+
+```{r adonis-5, eval=FALSE}
+# lots more detail in the help
+?how
+
+# check out the new, more flexible, but often slower sister function:
+?adonis2
+```
+
+
 

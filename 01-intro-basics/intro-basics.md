@@ -9,8 +9,6 @@ August 6, 2016 • ESA 2016
 * Etherpad 
     * https://public.etherpad-mozilla.org/p/ESA2016-intro-vegan
 
-
-
 ## Workshop logistics
 
 * Etherpad 
@@ -18,8 +16,6 @@ August 6, 2016 • ESA 2016
 * Red and Green Stickies 
   
 ![](img/Green_post_it.png)&nbsp;&nbsp;&nbsp;&nbsp;![](img/Red_post_it.png)
-
-
 
 ## Packages installed (and loaded)?
 
@@ -60,8 +56,6 @@ https://github.com/naupaka/esa_intro_vegan_2016
 ### “The purpose of computing is insight, not numbers” 
 ### - Richard Hamming 
 
-
-
 ## Digging in | Prepping your data for R and vegan
 
 ### “The purpose of computing is insight, not numbers” 
@@ -69,14 +63,14 @@ https://github.com/naupaka/esa_intro_vegan_2016
 <br /><br /><br />
 But you have to get through the numbers to get to the insight...
 
-
-
 ## Digging in | Prepping your data for R and vegan
 
 We've all heard data horror stories
 ![](img/otherpeoplesdata.png)
 
 # Cleaning and importing data
+
+## Loading data and then checking
 
 ```r
 setwd("your/working/directory/")
@@ -115,7 +109,6 @@ summary(BCI.small.csv.in)
  5: 1                                                                 
  o: 1                                                                 
 ```
-
 
 ## Cleaning your data for R and vegan
 
@@ -171,7 +164,6 @@ summary(BCI.small.csv.in)
  Max.   :1.00          Max.   :5.0   
 ```
 
-
 ## Loading your species by site matrix into R
 
 We will now switch to using a microbial ecology dataset, which we will load directly (from Zimmerman and Vitousek 2012)
@@ -194,11 +186,21 @@ w100y2      475       17      609
 w100y3       24       12      243
 ```
 
+## Loading your species by site matrix into R
 
+
+```r
+head(MLM.env[,1:7], n = 3)
+```
+
+```
+  X Tree_ID site_ID date_collected     UTM_zone Easting Northing
+1 1  w100y1   w100y     2009-11-18 NAD83 Zone 5  280572  2179971
+2 2  w100y2   w100y     2009-11-18 NAD83 Zone 5  280574  2179975
+3 3  w100y3   w100y     2009-11-18 NAD83 Zone 5  280588  2179975
+```
 
 # Basic data summarizing
-
-
 
 ## Summarizing data with `apply()` | sums and sorting
 
@@ -213,8 +215,6 @@ sort(sum.of.rows, decreasing = TRUE)[1:8] #top 8 rows (plots)
   w700y1   w700o9  w100y10  w1800y2   d700o9 d1700y10   w700o5   w100o1 
     7897     7805     7665     7536     7499     7109     7107     7092 
 ```
-
-
 
 ## Summarizing data with `apply()` | sums and sorting
 
@@ -241,8 +241,6 @@ OTU_0001 OTU_0002 OTU_0003
   174612   127234    39710 
 ```
 
-
-
 ## Summarizing data with `apply()` | sums and sorting
 
 **Number of plots in which each spp. occurs**
@@ -261,11 +259,7 @@ OTU_0106 OTU_0092
       62       60 
 ```
 
-
-
 # Data Transformation
-
-
 
 ## Basic data transformation
 
@@ -281,8 +275,6 @@ w100y1     3430        1       75
 w100y2      475       17      609
 w100y3       24       12      243
 ```
-
-
 
 ## Basic data transformation
 
@@ -311,8 +303,6 @@ w100y2 21.794495 4.123106 24.677925
 w100y3  4.898979 3.464102 15.588457
 ```
 
-
-
 ## Data transformation in vegan with `decostand()`
 
 **Total**
@@ -327,8 +317,6 @@ w100y1     3430        1       75
 w100y2      475       17      609
 w100y3       24       12      243
 ```
-
-
 
 ## Data transformation in vegan with `decostand()`
 
@@ -357,8 +345,6 @@ w100y2 0.089758125 0.0032123961 0.11507937
 w100y3 0.004244032 0.0021220159 0.04297082
 ```
 
-
-
 ## Data transformation in vegan with `decostand()`
 
 **Maximum**
@@ -373,8 +359,6 @@ w100y1     3430        1       75
 w100y2      475       17      609
 w100y3       24       12      243
 ```
-
-
 
 ## Data transformation in vegan with `decostand()`
 
@@ -403,8 +387,6 @@ w100y2 0.065247253 0.0028108466 0.15917407
 w100y3 0.003296703 0.0019841270 0.06351281
 ```
 
-
-
 ## Data transformation in vegan with `decostand()`
 
 **Presence-Absence**
@@ -419,8 +401,6 @@ w100y1     3430        1       75
 w100y2      475       17      609
 w100y3       24       12      243
 ```
-
-
 
 ## Data transformation in vegan with `decostand()`
 
@@ -449,8 +429,6 @@ w100y2        1        1        1
 w100y3        1        1        1
 ```
 
-
-
 ## Data transformation in vegan with `decostand()`
 
 **Hellinger (Legendre & Gallagher 2001)**    
@@ -466,8 +444,6 @@ w100y1     3430        1       75
 w100y2      475       17      609
 w100y3       24       12      243
 ```
-
-
 
 ## Data transformation in vegan with `decostand()`
 
@@ -497,8 +473,6 @@ w100y2 0.29959660 0.05667800 0.3392335
 w100y3 0.06514623 0.04606534 0.2072940
 ```
 
-
-
 ## Data transformation in vegan with `decostand()`
 
 **Wisconsin double standardization**      
@@ -514,8 +488,6 @@ w100y1     3430        1       75
 w100y2      475       17      609
 w100y3       24       12      243
 ```
-
-
 
 ## Data transformation in vegan with `decostand()`
 
@@ -545,18 +517,12 @@ w100y2 0.0005553552 2.392466e-05 0.0013548180
 w100y3 0.0000395903 2.382749e-05 0.0007627289
 ```
 
-
-
 # Calculating community distances
-
-
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
 ### Many different community distance metrics are available in `vegdist()`    
 *manhattan, euclidean, canberra, bray, kulczynski, jaccard, gower, altGower, morisita, horn, mountford, raup, binomial, chao, or cao*
-
-
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
@@ -580,8 +546,6 @@ Class 'dist'  atomic [1:8385] 0.805 0.769 0.78 0.76 0.793 ...
   ..- attr(*, "call")= language vegdist(x = MLM.otus, method = "jaccard", binary = TRUE)
 ```
 
-
-
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
 
@@ -597,9 +561,6 @@ as.matrix(spec.jaccpa)[1:4,1:4]
 4 0.4416667 0.4385965 0.4273504 0.0000000
 ```
 
-
-
-
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
 ### How to choose a good one for your data set?  
@@ -608,8 +569,6 @@ as.matrix(spec.jaccpa)[1:4,1:4]
 ```r
 ?vegdist
 ```
-
-
 
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
@@ -627,8 +586,6 @@ rank.elev
 0.4835205 0.3780230 0.3852126 0.5090748 
 ```
 
-
-
 ## Calculating distances with `vegdist()` | so many distance metrics, so little time!
 
 ### Second, try `rankindex()`    
@@ -644,8 +601,6 @@ rank.elev.wisc
        bray      euclid   manhattan        horn 
  0.45556000 -0.03630866  0.45555990  0.46304968 
 ```
-
-
 
 ## Calculating distances with `vegdist()` | comparison
 
@@ -668,8 +623,6 @@ sort(rank.elev.wisc, decreasing = TRUE)
  0.46304968  0.45556000  0.45555990 -0.03630866 
 ```
 
-
-
 ## Activity
 
 There is a data file in the workshop repositiory, in the `01-intro-basics/data/` folder called `varespec.xlsx`.  
@@ -687,8 +640,6 @@ There is a data file in the workshop repositiory, in the `01-intro-basics/data/`
 
 # Diversity metrics
 
-
-
 ## Alpha diversity
 
 Basic counts of richness for each plot or site
@@ -702,8 +653,6 @@ site.richness[1:7]
 w100y1 w100y2 w100y3 w100y4 w100y5 w100y6 w100y7 
    140    203    180    126    196    228    154 
 ```
-
-
 
 ## Alpha diversity | Other metrics
 
@@ -719,8 +668,6 @@ site.fisher[1:7]
 27.58229 41.88171 35.44263 22.43722 38.22437 47.38469 30.18662 
 ```
 
-
-
 ## Alpha diversity | Other metrics
 
 Shannon diversity
@@ -734,8 +681,6 @@ site.shannon[1:7]
    w100y1    w100y2    w100y3    w100y4    w100y5    w100y6    w100y7 
 1.3131475 3.6102503 2.8062958 0.8844189 2.1920820 2.9354744 2.5789890 
 ```
-
-
 
 ## Rarefaction
 
@@ -752,11 +697,9 @@ This finds the plot with the least number of individuals
 MLM.raremax <- min(apply(MLM.otus, 1, sum))
 ```
 
-
-
 ## Rarefaction
 
-Rarefy BCI species matrix to the minimum number of individuals in any plot    
+Rarefy MLM species matrix to the minimum number of individuals in any plot    
 and plot the relationship between observed and rarefied counts (plus add 1-1 line)
 
 ```r
@@ -766,8 +709,6 @@ abline(0, 1)
 ```
 
 ![](intro-basics_files/figure-html/rarefac-3-1.png)
-
-
 
 ## Rarefaction
 
@@ -779,9 +720,7 @@ rarecurve(MLM.otus, step = 20, sample = MLM.raremax, col = "blue", cex = 0.6)
 
 ![](intro-basics_files/figure-html/rarefac-4-1.png)
 
-
-
-## Beta diversity
+## Beta diversity {.smaller}
 
 Multivariate homogeneity of groups dispersions
 
@@ -810,8 +749,6 @@ Eigenvalues for PCoA axes:
 15.1299  8.0298  4.2202  2.3315  1.8155  1.5186  1.3340  1.2122 
 ```
 
-
-
 ## Beta diversity {.smaller}
 
 Multivariate homogeneity of groups dispersions
@@ -834,9 +771,6 @@ Residuals 117 3.04702 0.026043
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
-
-
-
 ## Beta diversity
 
 Plot of within-group multivariate dispersion
@@ -847,23 +781,19 @@ plot(MLM.bray.bdisp)
 
 ![](intro-basics_files/figure-html/beta-3-1.png)
 
-
-
 ## Beta diversity
 
 Boxplot of within-group multivariate dispersion
 
 ```r
-boxplot(MLM.bray.bdisp)
+boxplot(MLM.bray.bdisp, las = 3)
 ```
 
-![](intro-basics_files/figure-html/beta-4-1.png)
+![](intro-basics_files/figure-html/beta-4-1.png)<!-- -->
 
+## Beta diversity | ANOSIM Analysis of similarities
 
-
-## Beta diversity | ANOSIM
-
-Analysis of similarities 
+BE CAREFUL, VERY SENSITIVE TO MULTIVARIATE HETEROSKEDASTICITY
 
 ```r
 (MLM.bray.anosim <- anosim(MLM.bray, MLM.env$site_ID))
@@ -882,11 +812,8 @@ Permutation: free
 Number of permutations: 999
 ```
 
-
-
-## Beta diversity | ANOSIM
-
-Analysis of similarities 
+## Beta diversity | ANOSIM Analysis of similarities
+ 
 
 ```r
 plot(MLM.bray.anosim)
@@ -894,8 +821,15 @@ plot(MLM.bray.anosim)
 
 ![](intro-basics_files/figure-html/beta-6-1.png)
 
+# Study design, testing hypotheses, and PERMANOVAs
 
 ## PERMANOVA using `adonis`
+
+The key conceptual thing is to decide what is exchangeable (hence permutable) under the null hypothesis you are trying to test.
+
+You can't always test all the things you might be interested in at once in all designs.
+
+## PERMANOVA using `adonis` | {.smaller}
 
 Analysis of variance using distance matrices and for fitting linear models to distance matrices
 
@@ -920,4 +854,100 @@ Total               129    48.709                 1.00000
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
+
+## PERMANOVA using `adonis` | {.smaller}
+
+Thinking about study design and how to permute samples. <br /><br />
+![](img/MLM_map.png)<br />
+Sites from the Mauna Loa Environmental matrix in Hawai'i.
+
+## PERMANOVA using `adonis` | Substrate Age {.smaller}
+
+Thinking about study design and how to permute samples (old way using `strata`)
+
+```r
+adonis(MLM.otus ~ MLM.env$flow_age, strata = MLM.env$site_ID)
+```
+
+```
+
+Call:
+adonis(formula = MLM.otus ~ MLM.env$flow_age, strata = MLM.env$site_ID) 
+
+Blocks:  strata 
+Permutation: free
+Number of permutations: 999
+
+Terms added sequentially (first to last)
+
+                  Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)
+MLM.env$flow_age   1     1.062 1.06222  2.8536 0.02181      1
+Residuals        128    47.647 0.37224         0.97819       
+Total            129    48.709                 1.00000       
+```
+
+## PERMANOVA using `adonis` | Substrate Age
+
+The main thing with `permute` is to understand the levels of the hierarchy:
+
+1. **within**: how to permute samples at lowest level
+2. **plots**: how are samples grouped; permutations are restricted to be
+*within* plots; plots can also be permuted too or instead of samples
+3. **blocks**: these sit atop the hierarchy - samples within plots within
+blocks; blocks are *never* permuted
+
+You can replicate old `strata` arg in vegan's permutation code by
+setting either `plots` or `blocks` to be a factor variable.
+
+## PERMANOVA using `adonis` | Substrate Age
+
+Thinking about study design and how to permute samples (new way using `permute` package)
+
+```r
+h1 <- how(plots = Plots(MLM.env$site_ID))
+
+# returns max number of permutations given constraints
+check(MLM.otus, control = h1)
+```
+
+```
+[1] 1.891993e+85
+```
+
+## PERMANOVA using `adonis` | Substrate Age {.smaller}
+
+
+```r
+adonis(MLM.otus ~ MLM.env$flow_age, permutations = h1)
+```
+
+```
+
+Call:
+adonis(formula = MLM.otus ~ MLM.env$flow_age, permutations = h1) 
+
+Plots: MLM.env$site_ID, plot permutation: none
+Permutation: free
+Number of permutations: 199
+
+Terms added sequentially (first to last)
+
+                  Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)
+MLM.env$flow_age   1     1.062 1.06222  2.8536 0.02181      1
+Residuals        128    47.647 0.37224         0.97819       
+Total            129    48.709                 1.00000       
+```
+
+## PERMANOVA using `adonis` | Substrate Age
+
+
+```r
+# lots more detail in the help
+?how
+
+# check out the new, more flexible, but often slower sister function:
+?adonis2
+```
+
+
 
