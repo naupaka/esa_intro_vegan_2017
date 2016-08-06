@@ -1,30 +1,180 @@
 # Community data analysis using the vegan package in R
-Naupaka Zimmerman   
-March 4, 2016  
+Naupaka Zimmerman and Gavin Simpson  
+August 6, 2016 • ESA 2016  
 
 
 
+## Workshop logistics
 
-## Packages installed and loaded?
+* Etherpad 
+    * https://public.etherpad-mozilla.org/p/ESA2016-intro-vegan
+
+
+
+## Workshop logistics
+
+* Etherpad 
+    * https://public.etherpad-mozilla.org/p/ESA2016-intro-vegan
+* Red and Green Stickies 
+  
+![](img/Green_post_it.png)&nbsp;&nbsp;&nbsp;&nbsp;![](img/Red_post_it.png)
+
+
+
+## Packages installed (and loaded)?
 
 
 ```r
 install.packages("vegan", dependencies = TRUE)
+install.packages("plyr")
+install.packages("reshape2")
+
 library("vegan")
 ```
 
+### Data downloaded from github?  
+https://github.com/naupaka/esa_intro_vegan_2016
 
-## Loading your OTU table into R
+## Introduction to **vegan** | a potted history
 
+ * Jari Oksanen released first version of vegan to CRAN on September 5th 2001
+ * Limited scope; purpose was to have Peter Minchin's DECODA-like functions for NMDS available in R plus helper functions
+ * By version 1.4, vegan had DCA & CCA, with RDA following in 1.4.2. `ordisurf()` appeared in 1.4 also as did permutation tests.
+ * From version 1.6, vegan expanded into areas of theoretical ecology and diversity
+ * Version 1.6.5 brought the `metaMDS()` wrappers for NMDS
+ * Since then vegan has rapidly developed on the R-Forge website and expanded considerably
+ * Current development team: Jari Oksanen, F. Guillaume Blanchet, Roeland Kindt, Pierre Legendre, Peter R. Minchin, R. B. O'Hara, Gavin L. Simpson, Peter Solymos, M. Henry H. Stevens, Helene Wagner
+
+## Introduction to **vegan** | vegan today
+
+ * The current stable release is version 2.4-0 which is available from CRAN
+ * [http://cran.r-project.org/web/packages/vegan]()
+ * Development is mainly conducted via [github](https://github.com/vegandevs/vegan) with a separate development version
+ * Github also hosts our bug tracking, but we use R-Forge for mailing lists \& forums which should be first port of call for getting help
+ * [http://r-forge.r-project.org/projects/vegan]()
+ * Also several vignettes (manuals/guides) containing R code to explain how vegan works
+ * The vegan tutorial is available at [http://vegan.r-forge.r-project.org]()
+
+## Digging in | Prepping your data for R and vegan
+
+### “The purpose of computing is insight, not numbers” 
+### - Richard Hamming 
+
+
+
+## Digging in | Prepping your data for R and vegan
+
+### “The purpose of computing is insight, not numbers” 
+### - Richard Hamming 
+<br /><br /><br />
+But you have to get through the numbers to get to the insight...
+
+
+
+## Digging in | Prepping your data for R and vegan
+
+We've all heard data horror stories
+![](img/otherpeoplesdata.png)
+
+# Cleaning and importing data
 
 ```r
-MLM.otus <- read.csv("data/MLM_data_otus.csv", row.names = 1, header = TRUE)
-MLM.env <- read.csv("data/MLM_data_env.csv", header = TRUE)
+setwd("your/working/directory/")
+```
+
+## Loading data and then checking
+
+```r
+BCI.small.csv.in <- read.csv("data/BCI_small_broken.csv", header = TRUE)
+summary(BCI.small.csv.in)
+```
+
+```
+       X         X2.Abarema.macradenium Acacia.melanoceras
+ Min.   : 1.00   Min.   :0.0               : 3            
+ 1st Qu.: 5.75   1st Qu.:0.0            0  :14            
+ Median :10.50   Median :0.0            1  : 5            
+ Mean   :10.50   Mean   :0.3            N/A: 1            
+ 3rd Qu.:15.25   3rd Qu.:0.0                              
+ Max.   :20.00   Max.   :2.0                              
+ NA's   :3       NA's   :3                                
+                 Acalypha.diversifolia Acalypha.diversifolia.1
+                            : 2        Min.   :0.00000        
+ 0                          :18        1st Qu.:0.00000        
+ 3                          : 2        Median :0.00000        
+ Note to self: get more data: 1        Mean   :0.05556        
+                                       3rd Qu.:0.00000        
+                                       Max.   :1.00000        
+                                       NA's   :5              
+ Adelia.triloba   X.1                                         Notes   
+  : 3           Mode:logical                                     :20  
+ 0:11           NA's:23        Rained all day for this one       : 1  
+ 1: 4                          Snakes!                           : 1  
+ 2: 2                          undergrad team collected this plot: 1  
+ 3: 1                                                                 
+ 5: 1                                                                 
+ o: 1                                                                 
 ```
 
 
+## Cleaning your data for R and vegan
 
-## Loading your OTU table into R
+...worked example...
+
+## Cleaning your data for R and vegan
+
+### Loading cleaned data and then checking
+
+```r
+BCI.small.csv.in <- read.csv("data/BCI_small_fixed.csv", header = TRUE, row.names = 1)
+```
+
+Then...  
+
+```r
+head(BCI.small.csv.in, n = 3)
+```
+
+```
+  Abarema.macradenium Acacia.melanoceras Acalypha.diversifolia
+1                   0                  1                     0
+2                   1                  0                     0
+3                   0                  0                     0
+  Acalypha.macrostachya Adelia.triloba
+1                     0              0
+2                     0              0
+3                     1              0
+```
+
+## Cleaning your data for R and vegan
+
+Then...  
+
+```r
+summary(BCI.small.csv.in)
+```
+
+```
+ Abarema.macradenium Acacia.melanoceras Acalypha.diversifolia
+ Min.   :0.0         Min.   :0.00       Min.   :0.0          
+ 1st Qu.:0.0         1st Qu.:0.00       1st Qu.:0.0          
+ Median :0.0         Median :0.00       Median :0.0          
+ Mean   :0.3         Mean   :0.25       Mean   :0.3          
+ 3rd Qu.:0.0         3rd Qu.:0.25       3rd Qu.:0.0          
+ Max.   :2.0         Max.   :1.00       Max.   :3.0          
+ Acalypha.macrostachya Adelia.triloba
+ Min.   :0.00          Min.   :0.0   
+ 1st Qu.:0.00          1st Qu.:0.0   
+ Median :0.00          Median :0.0   
+ Mean   :0.05          Mean   :0.8   
+ 3rd Qu.:0.00          3rd Qu.:1.0   
+ Max.   :1.00          Max.   :5.0   
+```
+
+
+## Loading your species by site matrix into R
+
+We will now switch to using a microbial ecology dataset, which we will load directly (from Zimmerman and Vitousek 2012)
 
 
 ```r
@@ -517,6 +667,22 @@ sort(rank.elev.wisc, decreasing = TRUE)
        horn        bray   manhattan      euclid 
  0.46304968  0.45556000  0.45555990 -0.03630866 
 ```
+
+
+
+## Activity
+
+There is a data file in the workshop repositiory, in the `01-intro-basics/data/` folder called `varespec.xlsx`.  
+
+1. Download this file (which has errors)
+2. Make a copy
+3. Clean it up
+4. Load it into R
+5. Try at least two different methods to standardize the data.
+6. Load the corresponding environmental data with `data(varechem)`
+7. Evaluate at least five different community distance metrics with `rankindex()`
+8. Calculate community distances using that metric
+
 
 
 # Diversity metrics
