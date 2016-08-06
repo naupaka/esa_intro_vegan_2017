@@ -1,7 +1,7 @@
 ---
 title: "Ordination with vegan"
 author: "Naupaka Zimmerman"
-date: "March 3, 2016"
+date: "August 6, 2016 • ESA 2016"
 output:
   ioslides_presentation:
     highlight: tango
@@ -14,21 +14,33 @@ knitr::opts_chunk$set(comment = "", cache = TRUE, crop = TRUE)
 knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 ```
 
-# Ordination plots
+# Ordination types
+
+## Constrained vs unconstrained ordination
+
+**What does it mean?**
+
+* In **unconstrained ordination**, first we look for major variation, then we try to attribute it to environmental variation
+* vs. **constrained ordination** (a.k.a. direct gradient analysis), where we only want to see what can be explained by environmental variables of interest
+
+## Constrained ordination
+
+**What does it mean?**
+
+* In **unconstrained ordination**, first we look for major variation, then we try to attribute it to environmental variation
+* vs. **constrained ordination** (a.k.a. direct gradient analysis), where we only want to see what can be explained by environmental variables of interest
+
+**Examples of constrained ordination:**
+
+* Canonical Correspondance Analysis - CCA
+* Redundancy Analysis - RDA
 
 ## Unconstrained ordination
 
 **What does it mean?**
 
-* First we look for major variation, then try to attribute it to environmental variation
-* vs. constrained ordination, where we only want to see what can be explained by environmental variables of interest
-
-## Unconstrained ordination
-
-**What does it mean?**
-
-* First we look for major variation, then try to attribute it to environmental variation
-* vs. constrained ordination, where we only want to see what can be explained by environmental variables of interest
+* In **unconstrained ordination**, first we look for major variation, then we try to attribute it to environmental variation
+* vs. **constrained ordination** (a.k.a. direct gradient analysis), where we only want to see what can be explained by environmental variables of interest
 
 **Examples of unconstrained ordination:**
 
@@ -41,8 +53,8 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 
 **What does it mean?**
 
-* First we look for major variation, then try to attribute it to environmental variation
-* vs. constrained ordination, where we only want to see what can be explained by environmental variables of interest
+* In **unconstrained ordination**, first we look for major variation, then we try to attribute it to environmental variation
+* vs. **constrained ordination** (a.k.a. direct gradient analysis), where we only want to see what can be explained by environmental variables of interest
 
 **Examples of unconstrained ordination:**
 
@@ -50,6 +62,13 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 * Principal Components Analysis - PCA
 * Principal Coordinates Analysis - PCoA
 * **Nonmetric Multidimensional Scaling - NMDS**
+
+## Side note on resources I have found helpful
+
+![Numerical Ecology by Legendre and Legendre](https://images-na.ssl-images-amazon.com/images/I/41WZAXBuJ-L._SX399_BO1,204,203,200_.jpg)
+![Analysis of Ecological Communities by McCune and Grace](https://images-na.ssl-images-amazon.com/images/I/41gAmJeGWwL._SX373_BO1,204,203,200_.jpg)<br />
+
+# Ordination plots
 
 ## Before we get started
 
@@ -68,16 +87,16 @@ MLM.env <- read.csv("data/MLM_data_env.csv", row.names = 1, header = TRUE)
 
 ```{r loading-2}
 dim(MLM.otus)
-head(MLM.otus[,1:10], n=1)
+head(MLM.otus[,1:10], n = 1)
 ```
 
 ## Before we get started | environment
 
 ```{r loading-3}
-head(MLM.env, n=1)
+head(MLM.env, n = 1)
 ```
 
-## Before we get started | environment
+## Before we get started | environment {.smaller}
 
 ```{r loading-3.5}
 summary(MLM.env)
@@ -94,7 +113,7 @@ Vegan also has a wrapper function for doing NMDS ordinations using best practice
 
 * `metaMDS()`
 
-This will do handy things like try to standardize your data if necessary and perform rotation, among other things.
+This will do handy things like try to standardize your data if necessary, do a number of random starts to reduce problem of being trapped in local maxima, evaluates potential solutions against each other via procrustes rotation, and performs rotation of the final point cloud, among other things. **You probably want to use this. It's a great place to start.**
 
 ## Basic ordination and plotting
 
@@ -133,21 +152,22 @@ plot(MLM.bray.ord, display = "sites", type = "t")
 ```{r NMDS-5.2, fig.height=5}
 plot(MLM.bray.ord, display = "sites")
 set.seed(314) ## make reproducible
-ordipointlabel(dune.bray.ord, display = "sites", scaling = 3, add = TRUE)
+ordipointlabel(MLM.bray.ord, display = "sites", scaling = 3, add = TRUE)
 ```
 
 ## Site names instead of points
 
-```{r NMDS-5.5, fig.height=5}
-plot(dune.bray.ord, display = "species")
+```{r NMDS-5.5, fig.height=5, eval=FALSE}
+# not going to run this it will take forever
+plot(MLM.bray.ord, display = "species")
 set.seed(314) ## make reproducible
-ordipointlabel(dune.bray.ord, display = "species", scaling = 3, add = TRUE)
+ordipointlabel(MLM.bray.ord, display = "species", scaling = 3, add = TRUE)
 ```
 
 ## Site names instead of points
 
 ```{r NMDS-5.6, fig.height=5}
-plot(dune.bray.ord)
+plot(MLM.bray.ord)
 set.seed(314) ## make reproducible
 ordipointlabel(MLM.bray.ord, display = "sites", scaling = 3, add = TRUE)
 ```
@@ -305,7 +325,10 @@ ordisurf(MLM.bray.ord,MLM.env$elevation_m, add = TRUE)
 ## Vectors in ordination space
 
 ```{r NMDS-24}
-MLM.bray.ord.elev.fit <- envfit(MLM.bray.ord ~ elevation_m, data = MLM.env, permutations = 1000)
+MLM.bray.ord.elev.fit <- envfit(MLM.bray.ord ~ elevation_m, 
+								data = MLM.env, 
+								permutations = 1000)
+# count also use, eg: permutations = how(plots = Plots(Your.Env.Data$Your.Plots))
 MLM.bray.ord.elev.fit
 ```
 

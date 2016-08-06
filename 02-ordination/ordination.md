@@ -1,30 +1,36 @@
 # Ordination with vegan
 Naupaka Zimmerman  
-March 3, 2016  
+August 6, 2016 • ESA 2016  
 
 
 
+# Ordination types
 
+## Constrained vs unconstrained ordination
 
-# Ordination plots
+**What does it mean?**
 
+* In **unconstrained ordination**, first we look for major variation, then we try to attribute it to environmental variation
+* vs. **constrained ordination** (a.k.a. direct gradient analysis), where we only want to see what can be explained by environmental variables of interest
 
+## Constrained ordination
+
+**What does it mean?**
+
+* In **unconstrained ordination**, first we look for major variation, then we try to attribute it to environmental variation
+* vs. **constrained ordination** (a.k.a. direct gradient analysis), where we only want to see what can be explained by environmental variables of interest
+
+**Examples of constrained ordination:**
+
+* Canonical Correspondance Analysis - CCA
+* Redundancy Analysis - RDA
 
 ## Unconstrained ordination
 
 **What does it mean?**
 
-* First we look for major variation, then try to attribute it to environmental variation
-* vs. constrained ordination, where we only want to see what can be explained by environmental variables of interest
-
-
-
-## Unconstrained ordination
-
-**What does it mean?**
-
-* First we look for major variation, then try to attribute it to environmental variation
-* vs. constrained ordination, where we only want to see what can be explained by environmental variables of interest
+* In **unconstrained ordination**, first we look for major variation, then we try to attribute it to environmental variation
+* vs. **constrained ordination** (a.k.a. direct gradient analysis), where we only want to see what can be explained by environmental variables of interest
 
 **Examples of unconstrained ordination:**
 
@@ -33,14 +39,12 @@ March 3, 2016
 * Principal Coordinates Analysis - PCoA
 * Nonmetric Multidimensional Scaling - NMDS
 
-
-
 ## Unconstrained ordination
 
 **What does it mean?**
 
-* First we look for major variation, then try to attribute it to environmental variation
-* vs. constrained ordination, where we only want to see what can be explained by environmental variables of interest
+* In **unconstrained ordination**, first we look for major variation, then we try to attribute it to environmental variation
+* vs. **constrained ordination** (a.k.a. direct gradient analysis), where we only want to see what can be explained by environmental variables of interest
 
 **Examples of unconstrained ordination:**
 
@@ -49,7 +53,12 @@ March 3, 2016
 * Principal Coordinates Analysis - PCoA
 * **Nonmetric Multidimensional Scaling - NMDS**
 
+## Side note on resources I have found helpful
 
+![Numerical Ecology by Legendre and Legendre](https://images-na.ssl-images-amazon.com/images/I/41WZAXBuJ-L._SX399_BO1,204,203,200_.jpg)
+![Analysis of Ecological Communities by McCune and Grace](https://images-na.ssl-images-amazon.com/images/I/41gAmJeGWwL._SX373_BO1,204,203,200_.jpg)<br />
+
+# Ordination plots
 
 ## Before we get started
 
@@ -78,7 +87,7 @@ dim(MLM.otus)
 ```
 
 ```r
-head(MLM.otus[,1:10], n=1)
+head(MLM.otus[,1:10], n = 1)
 ```
 
 ```
@@ -88,25 +97,23 @@ w100y1     3430        1       75        3        0        6        0
 w100y1        2      179        0
 ```
 
-
-
 ## Before we get started | environment
 
 
 ```r
-head(MLM.env, n=1)
+head(MLM.env, n = 1)
 ```
 
 ```
-  X Tree_ID site_ID date_collected     UTM_zone Easting Northing
-1 1  w100y1   w100y     2009-11-18 NAD83 Zone 5  280572  2179971
-  elevation_m side_of_island flow_age site_elevation_m
-1          92            Wet    Young              100
-  approx_annual_rainfall_mm approx_mean_annual_temp_deg_C flow_type
-1                      3900                          22.2  pahoehoe
+  Tree_ID site_ID date_collected     UTM_zone Easting Northing elevation_m
+1  w100y1   w100y     2009-11-18 NAD83 Zone 5  280572  2179971          92
+  side_of_island flow_age site_elevation_m approx_annual_rainfall_mm
+1            Wet    Young              100                      3900
+  approx_mean_annual_temp_deg_C flow_type
+1                          22.2  pahoehoe
 ```
 
-## Before we get started | environment
+## Before we get started | environment {.smaller}
 
 
 ```r
@@ -148,8 +155,6 @@ summary(MLM.env)
                                              
 ```
 
-
-
 ## Basic ordination and plotting
 
 There are two basic NMDS ordination functions:
@@ -161,9 +166,7 @@ Vegan also has a wrapper function for doing NMDS ordinations using best practice
 
 * `metaMDS()`
 
-This will do handy things like try to standardize your data if necessary and perform rotation, among other things.
-
-
+This will do handy things like try to standardize your data if necessary, do a number of random starts to reduce problem of being trapped in local maxima, evaluates potential solutions against each other via procrustes rotation, and performs rotation of the final point cloud, among other things. **You probably want to use this. It's a great place to start.**
 
 ## Basic ordination and plotting
 
@@ -174,8 +177,6 @@ MLM.bray.ord <- metaMDS(MLM.otus, distance = "bray", k = 2, trymax = 50)
 
 **Show in RStudio**
 
-
-
 ## Basic ordination and plotting (using all defaults)
 
 
@@ -184,9 +185,6 @@ plot(MLM.bray.ord)
 ```
 
 ![](ordination_files/figure-html/NMDS-2-1.png)
-
-
-
 
 ## Basic ordination and plotting (just plots)
 
@@ -197,8 +195,6 @@ plot(MLM.bray.ord, display = "sites")
 
 ![](ordination_files/figure-html/NMDS-3-1.png)
 
-
-
 ## Basic ordination and plotting (just species)
 
 
@@ -208,8 +204,6 @@ plot(MLM.bray.ord, display = "species")
 
 ![](ordination_files/figure-html/NMDS-4-1.png)
 
-
-
 ## Site names instead of points
 
 
@@ -218,8 +212,6 @@ plot(MLM.bray.ord, display = "sites", type = "t")
 ```
 
 ![](ordination_files/figure-html/NMDS-5-1.png)
-
-
 
 ## Site names instead of points
 
@@ -232,6 +224,26 @@ ordipointlabel(MLM.bray.ord, display = "sites", scaling = 3, add = TRUE)
 
 ![](ordination_files/figure-html/NMDS-5.2-1.png)
 
+## Site names instead of points
+
+
+```r
+# not going to run this it will take forever
+plot(MLM.bray.ord, display = "species")
+set.seed(314) ## make reproducible
+ordipointlabel(MLM.bray.ord, display = "species", scaling = 3, add = TRUE)
+```
+
+## Site names instead of points
+
+
+```r
+plot(MLM.bray.ord)
+set.seed(314) ## make reproducible
+ordipointlabel(MLM.bray.ord, display = "sites", scaling = 3, add = TRUE)
+```
+
+![](ordination_files/figure-html/NMDS-5.6-1.png)<!-- -->
 
 ## Larger points
 
@@ -242,13 +254,11 @@ plot(MLM.bray.ord, display = "sites", cex=2)
 
 ![](ordination_files/figure-html/NMDS-6-1.png)
 
-
 ## Modifying the display of the points with environmental data 
 
 * Color
 * Shape
 * Size
-
 
 
 ## Modifying the color of points {.smaller}
@@ -266,11 +276,8 @@ legend("topright", legend = levels(MLM.env$side_of_island), bty = "n",
 ![](ordination_files/figure-html/NMDS-7-1.png)
 
 
-
 ## Modifying the shape of points | pch()
 ![](ordination_files/figure-html/NMDS-8-1.png) 
-
-
 
 ## Modifying the shape of points {.smaller}
 
@@ -284,8 +291,6 @@ legend("topright", legend = levels(MLM.env$flow_type), bty = "n",
 ```
 
 ![](ordination_files/figure-html/NMDS-9-1.png)
-
-
 
 ## Modifying the shape and color of points {.smaller}
 
@@ -305,8 +310,6 @@ legend(1.4,1.05, legend = levels(MLM.env$flow_type), bty = "n",
 
 ![](ordination_files/figure-html/NMDS-10-1.png)
 
-
-
 ## Adding other layers
 
 
@@ -316,8 +319,6 @@ plot(MLM.bray.ord, display = "sites", cex=2)
 ```
 
 ![](ordination_files/figure-html/NMDS-11-1.png)
-
-
 
 ## Adding other layers
 
@@ -329,8 +330,6 @@ ordihull(MLM.bray.ord, groups = MLM.env$site_ID, label = FALSE)
 
 ![](ordination_files/figure-html/NMDS-12-1.png)
 
-
-
 ## Adding other layers
 
 
@@ -340,8 +339,6 @@ ordihull(MLM.bray.ord, groups = MLM.env$site_ID, label = FALSE, col = "blue")
 ```
 
 ![](ordination_files/figure-html/NMDS-13-1.png)
-
-
 
 ## Adding other layers
 
@@ -354,8 +351,6 @@ ordispider(MLM.bray.ord,groups = MLM.env$site_ID, label = TRUE)
 
 ![](ordination_files/figure-html/NMDS-14-1.png)
 
-
-
 ## Adding other layers
 
 
@@ -365,8 +360,6 @@ plot(MLM.bray.ord, display = "sites", cex=2)
 ```
 
 ![](ordination_files/figure-html/NMDS-15-1.png)
-
-
 
 ## Adding other layers
 
@@ -378,8 +371,6 @@ ordispider(MLM.bray.ord,groups = MLM.env$site_ID, label = TRUE)
 
 ![](ordination_files/figure-html/NMDS-16-1.png)
 
-
-
 ## Adding other layers - axes scaling
 
 
@@ -388,8 +379,6 @@ plot(MLM.bray.ord, type = "n")
 ```
 
 ![](ordination_files/figure-html/NMDS-17-1.png)
-
-
 
 ## Adding other layers - axes scaling
 
@@ -401,8 +390,6 @@ points(MLM.bray.ord,display = "sites", cex = 2)
 
 ![](ordination_files/figure-html/NMDS-18-1.png)
 
-
-
 ## Adding other layers - axes scaling
 
 
@@ -411,8 +398,6 @@ plot(MLM.bray.ord, display = "sites", type = "n")
 ```
 
 ![](ordination_files/figure-html/NMDS-19-1.png)
-
-
 
 ## Adding other layers - axes scaling
 
@@ -423,8 +408,6 @@ points(MLM.bray.ord, display = "sites", cex = 2)
 ```
 
 ![](ordination_files/figure-html/NMDS-20-1.png)
-
-
 
 ## Adding other layers
 
@@ -437,8 +420,6 @@ ordispider(MLM.bray.ord,groups = MLM.env$site_ID, label = TRUE)
 
 ![](ordination_files/figure-html/NMDS-21-1.png)
 
-
-
 ## Adding other layers
 
 
@@ -450,8 +431,6 @@ ordiellipse(MLM.bray.ord,groups = MLM.env$site_ID, label = FALSE)
 
 ![](ordination_files/figure-html/NMDS-22-1.png)
 
-
-
 ## Adding other layers
 
 ```r
@@ -462,13 +441,14 @@ ordisurf(MLM.bray.ord,MLM.env$elevation_m, add = TRUE)
 
 ![](ordination_files/figure-html/NMDS-23-1.png)
 
-
-
 ## Vectors in ordination space
 
 
 ```r
-MLM.bray.ord.elev.fit <- envfit(MLM.bray.ord ~ elevation_m, data = MLM.env, permutations = 1000)
+MLM.bray.ord.elev.fit <- envfit(MLM.bray.ord ~ elevation_m, 
+								data = MLM.env, 
+								permutations = 1000)
+# count also use, eg: permutations = how(plots = Plots(Your.Env.Data$Your.Plots))
 MLM.bray.ord.elev.fit
 ```
 
@@ -484,8 +464,6 @@ Permutation: free
 Number of permutations: 1000
 ```
 
-
-
 ## Vectors in ordination space
 
 
@@ -498,4 +476,15 @@ ordisurf(MLM.bray.ord,MLM.env$elevation_m, add = TRUE)
 
 ![](ordination_files/figure-html/NMDS-25-1.png)
 
+## Activity
 
+Using the cleaned `varespec` data from the last exercise, and the corresponding environmental data, loaded with `data(varechem)`:
+
+1. Load the data
+2. Create an NMDS plot using `metaMDS()`
+    * use the distance metric you selected earlier
+        * if this doesn't work, `bray` is a decent fallback
+    * Plot only the sites (not the species)
+    * Make the points blue squares, size (cex = 2)
+    * Add an `ordisurf` with one of the environmental variables
+    * add a title with `main = "title"`
