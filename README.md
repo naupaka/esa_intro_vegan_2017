@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.836943.svg)](https://doi.org/10.5281/zenodo.836943)
+
 ## Introduction to community data analysis using the vegan package in R    
 
 Welcome to the GitHub repository for workshop on community ecology analyses using the `vegan` package at ESA 2016.
