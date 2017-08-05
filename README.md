@@ -1,19 +1,19 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.836943.svg)](https://doi.org/10.5281/zenodo.836943)
-
 ## Introduction to community data analysis using the vegan package in R    
 
-Welcome to the GitHub repository for workshop on community ecology analyses using the `vegan` package at ESA 2016.
+Welcome to the GitHub repository for workshop on community ecology analyses using the `vegan` package at ESA 2017.
 
 **Location and time:**    
-Saturday, August 6, 2016    
-12:00 PM - 5:00 PM     
-Location: Room **304**, Ft. Lauderdale Convention Center     
+Sunday, August 6, 2017    
+8:00 AM - 11:30 AM     
+Location: Room **C125-126**, Oregon Convention Center     
 
 ## Organizers
 [Naupaka Zimmerman](http://naupaka.net) and [Gavin Simpson](http://www.fromthebottomoftheheap.net).
 
 ## Instructors and helpers
-[Naupaka Zimmerman](http://naupaka.net) and [Andrew Tredennick](http://atredennick.github.io).
+[Naupaka Zimmerman](http://naupaka.net),
+[Andrew Tredennick](http://atredennick.github.io),
+[Gavin Simpson](http://www.fromthebottomoftheheap.net), [Noam Ross](http://www.noamross.net/index.html).
 
 ---
 
@@ -30,8 +30,7 @@ If you don't already have R set up with a suitable code editor, we recommend dow
 
 ```r
 install.packages("vegan", dependencies = TRUE)
-install.packages("plyr")
-install.packages("reshape2")
+install.packages("permute")
 ```
 
 ### Extra check for MacOS X users
