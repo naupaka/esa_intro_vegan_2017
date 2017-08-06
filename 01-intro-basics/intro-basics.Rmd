@@ -1,7 +1,7 @@
 ---
 title: "Community data analysis using the vegan package in R"
 author: "Naupaka Zimmerman and Gavin Simpson"
-date: "August 6, 2016 • ESA 2016"
+date: "August 6, 2017 • ESA 2017"
 output:
   ioslides_presentation:
     fig_height: 6
@@ -19,12 +19,12 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 ## Workshop logistics
 
 * Etherpad 
-    * https://public.etherpad-mozilla.org/p/ESA2016-intro-vegan
+    * https://public.etherpad-mozilla.org/p/ESA2017-intro-vegan
 
 ## Workshop logistics
 
 * Etherpad 
-    * https://public.etherpad-mozilla.org/p/ESA2016-intro-vegan
+    * https://public.etherpad-mozilla.org/p/ESA2017-intro-vegan
 * Red and Green Stickies 
   
 ![](img/Green_post_it.png)&nbsp;&nbsp;&nbsp;&nbsp;![](img/Red_post_it.png)
@@ -33,9 +33,7 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 
 ```{r load-libraries, eval=FALSE}
 install.packages("vegan", dependencies = TRUE)
-install.packages("plyr")
-install.packages("reshape2")
-
+install.packages("permute")
 library("vegan")
 ```
 

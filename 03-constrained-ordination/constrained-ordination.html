@@ -14,11 +14,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <link rel="stylesheet" media="all" href="constrained-ordination_files/ioslides-13.5.1/fonts/fonts.css">
-
-  <link rel="stylesheet" media="all" href="constrained-ordination_files/ioslides-13.5.1/theme/css/default.css">
-  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="constrained-ordination_files/ioslides-13.5.1/theme/css/phone.css">
-
   <base target="_blank">
 
   <script type="text/javascript">
@@ -45,6 +40,17 @@
             ]
     };
   </script>
+
+  <link href="constrained-ordination_files/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="constrained-ordination_files/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="constrained-ordination_files/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="constrained-ordination_files/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="constrained-ordination_files/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="constrained-ordination_files/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="constrained-ordination_files/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="constrained-ordination_files/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="constrained-ordination_files/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="constrained-ordination_files/ioslides-13.5.1/js/slide-deck.js"></script>
 
   <style type="text/css">
 
@@ -75,7 +81,6 @@
   </style>
 
 
-
 </head>
 
 <body style="opacity: 0">
@@ -88,7 +93,7 @@
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">August 6, 2016 • ESA 2016</p>
+            <p style="margin-top: 6px; margin-left: -2px;">August 6, 2017 • ESA 2017</p>
           </hgroup>
   </slide>
 
@@ -366,7 +371,7 @@ Eigenvalues for unconstrained axes:
 
 <ul>
 <li>VIF &gt;= 20 indicates <em>strong collinearity</em> in constraints</li>
-<li>VIF &gt;= 10 potnetially of concern &amp; should be looked at</li>
+<li>VIF &gt;= 10 potentially of concern &amp; should be looked at</li>
 </ul>
 
 <p>Computed via <code>vif.cca()</code></p>
@@ -1255,20 +1260,12 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 
 </slides>
 
-<script src="constrained-ordination_files/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
-<script src="constrained-ordination_files/ioslides-13.5.1/js/prettify/prettify.js"></script>
-<script src="constrained-ordination_files/ioslides-13.5.1/js/prettify/lang-r.js"></script>
-<script src="constrained-ordination_files/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
-<script src="constrained-ordination_files/ioslides-13.5.1/js/hammer.js"></script>
-<script src="constrained-ordination_files/ioslides-13.5.1/js/slide-controller.js"></script>
-<script src="constrained-ordination_files/ioslides-13.5.1/js/slide-deck.js"></script>
-
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

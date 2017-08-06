@@ -1,18 +1,18 @@
 # Community data analysis using the vegan package in R
 Naupaka Zimmerman and Gavin Simpson  
-August 6, 2016 • ESA 2016  
+August 6, 2017 • ESA 2017  
 
 
 
 ## Workshop logistics
 
 * Etherpad 
-    * https://public.etherpad-mozilla.org/p/ESA2016-intro-vegan
+    * https://public.etherpad-mozilla.org/p/ESA2017-intro-vegan
 
 ## Workshop logistics
 
 * Etherpad 
-    * https://public.etherpad-mozilla.org/p/ESA2016-intro-vegan
+    * https://public.etherpad-mozilla.org/p/ESA2017-intro-vegan
 * Red and Green Stickies 
   
 ![](img/Green_post_it.png)&nbsp;&nbsp;&nbsp;&nbsp;![](img/Red_post_it.png)
@@ -22,9 +22,7 @@ August 6, 2016 • ESA 2016
 
 ```r
 install.packages("vegan", dependencies = TRUE)
-install.packages("plyr")
-install.packages("reshape2")
-
+install.packages("permute")
 library("vegan")
 ```
 

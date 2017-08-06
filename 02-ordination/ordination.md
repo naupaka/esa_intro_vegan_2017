@@ -1,6 +1,6 @@
 # Ordination with vegan
-Naupaka Zimmerman  
-August 6, 2016 • ESA 2016  
+Naupaka Zimmerman and Gavin Simpson  
+August 6, 2017 • ESA 2017  
 
 
 
