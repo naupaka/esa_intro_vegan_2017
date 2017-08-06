@@ -35,17 +35,6 @@ install.packages("vegan", dependencies = TRUE)
 install.packages("permute")
 ```
 
-### Extra check for MacOS X users
-In order to use the `orditkplot()` function you need a working Tcl/Tk installation. This may not be installed on Macs; to check run the following code
-
-```r
-library("vegan")
-data(varespec)
-orditkplot(rda(varespec))
-```
-
-If you get errors and not a new window in which you can edit the biplot, then you probably don't have the correct setup on your system to use Tcl/Tk. Refer to the [Tcl/Tk Issues section](http://cran.r-project.org/bin/macosx/RMacOSX-FAQ.html#Tcl_002fTk-issues) of the R Mac OS X FAQ. We may not have a chance to cover the use of the function in the workshop, but it can't hurt to get it properly configured since you may want to use it at some point on your own.
-
 ### Downloading code/data from this repository
 
 The slides, data, and code in this repository may change up until the start of the workshop, so please wait until as late as possible to download these files from GitHub to ensure that you have the most recent copy.
